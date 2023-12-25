@@ -6,9 +6,10 @@ const App = () => {
     number,
     remainingGuesses,
     message,
+    history,
     handleGuessSubmit,
     handleGuessChange
-   } = useApp();
+  } = useApp();
 
   return (<>
     <form onSubmit={handleGuessSubmit}>
@@ -18,6 +19,14 @@ const App = () => {
     <div>{number}</div>
     <div>{message}</div>
     <div>Remaining guesses: {remainingGuesses}</div>
+    <br></br>
+    <div>Past guesses:</div>
+    {history.map(({ guess, message }, idx) => (
+      <div key={idx}>
+        <span>{guess}</span>----
+        <span>{message}</span>
+      </div>
+    ))}
   </>);
 };
 
