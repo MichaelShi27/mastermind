@@ -1,5 +1,5 @@
 import { validateGuess, createFeedbackMessage, getMatchCounts } from './helpers.js';
-import { INVALID_GUESS_MESSAGE, CORRECT_GUESS_MESSAGE} from '../../constants.js';
+import { MESSAGES } from '../../constants.js';
 
 const inputLogic = ({ 
   guess, number, remainingGuesses, setGuess, setMessage, setGameOver, setRemainingGuesses 
@@ -8,12 +8,12 @@ const inputLogic = ({
     e.preventDefault();
 
     if (validateGuess(guess) === false) {
-      setMessage(INVALID_GUESS_MESSAGE);
+      setMessage(MESSAGES.INVALID_GUESS);
       return;
     }
 
     if (guess === number) { // player wins
-      setMessage(CORRECT_GUESS_MESSAGE);
+      setMessage(MESSAGES.CORRECT_GUESS);
       setGameOver(true);
     } else {
       setRemainingGuesses(remainingGuesses - 1);

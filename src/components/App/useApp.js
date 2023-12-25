@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { fetchNumber } from "./helpers.js";
-import { LOSS_MESSAGE } from "../../constants.js";
+import { MESSAGES } from "../../constants.js";
 
 const useApp = () => {
   const [ number, setNumber ] = useState(null);
-  const [ guess, setGuess ] = useState(null);
+  const [ guess, setGuess ] = useState('');
   const [ remainingGuesses, setRemainingGuesses ] = useState(10);
   const [ message, setMessage ] = useState('');
   const [ history, setHistory ] = useState([]);
@@ -20,7 +20,7 @@ const useApp = () => {
     if (remainingGuesses === 10) return; // otherwise history gains an entry upon initial render
 
     if (remainingGuesses === 0) { // player loses
-      setMessage(LOSS_MESSAGE);
+      setMessage(MESSAGES.LOSS);
       setGameOver(true);
     }
     setHistory(oldHistory => [ { guess, message }, ...oldHistory ]);

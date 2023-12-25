@@ -1,4 +1,4 @@
-import { ALL_INCORRECT_MESSAGE } from '../../constants.js';
+import { MESSAGES } from '../../constants.js';
 
 /*
   validateGuess verifies that the guess is exactly 4 characters long and that those 4 characters are numbers.
@@ -15,7 +15,7 @@ import { ALL_INCORRECT_MESSAGE } from '../../constants.js';
 export const validateGuess = guess => guess.length === 4 && !guess.split('').some(char => isNaN(Number(char)));
 
 export const createFeedbackMessage = (digitCount, locationCount) => {
-  if (digitCount === 0) return ALL_INCORRECT_MESSAGE;
+  if (digitCount === 0) return MESSAGES.ALL_INCORRECT;
   const digitPlural = digitCount > 1 ? 's' : '';
   const locationPlural = locationCount !== 1 ? 's' : '';
   return `${digitCount} correct number${digitPlural} and ${locationCount} correct location${locationPlural}`;
