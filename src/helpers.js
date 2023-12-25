@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const INVALID_GUESS_MESSAGE = 'Please enter 4 numbers.';
-export const CORRECT_GUESS_MESSAGE = 'Correct!';
+export const CORRECT_GUESS_MESSAGE = 'Correct! Great job! 🥳';
+export const LOSS_MESSAGE = 'Game over. Better luck next time!';
 const ALL_INCORRECT_MESSAGE = 'All incorrect!';
 
 export const createFeedbackMessage = (digitCount, locationCount) => {

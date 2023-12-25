@@ -7,25 +7,32 @@ const App = () => {
     remainingGuesses,
     message,
     history,
+    gameOver,
     handleGuessSubmit,
-    handleGuessChange
+    handleGuessChange,
+    startNewGame
   } = useApp();
 
   return (<>
-    <form onSubmit={handleGuessSubmit}>
-      <input name="query" onChange={handleGuessChange}/>
-      <button>Guess</button>
-    </form>
+    {!gameOver && (
+      <form onSubmit={handleGuessSubmit}>
+        <input name="query" onChange={handleGuessChange}/>
+        <button>Guess</button>
+      </form>
+    )}
     <div>{number}</div>
     <div>{message}</div>
+    {gameOver && <button onClick={startNewGame}>Play Again</button>}
     <div>Remaining guesses: {remainingGuesses}</div>
     <br></br>
     <div>Past guesses:</div>
     {history.map(({ guess, message }, idx) => (
-      <div key={idx}>
-        <span>{guess}</span>----
-        <span>{message}</span>
-      </div>
+      idx === 0 ? null : (
+        <div key={idx}>
+          <span>{guess}</span> ----
+          <span>{message}</span>
+        </div>
+      )
     ))}
   </>);
 };
