@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
-
-import { getMatchCounts } from "../gameLogic.js";
-import { 
-  fetchNumber, validateGuess, INVALID_GUESS_MESSAGE, CORRECT_GUESS_MESSAGE, LOSS_MESSAGE,
-  createFeedbackMessage 
-} from "../helpers.js";
+import { fetchNumber } from "./helpers.js";
+import { LOSS_MESSAGE } from "../../constants.js";
 
 const useApp = () => {
   const [ number, setNumber ] = useState(null);
@@ -30,36 +26,19 @@ const useApp = () => {
     setHistory(oldHistory => [ { guess, message }, ...oldHistory ]);
   }, [ remainingGuesses ]);
 
-  const handleGuessSubmit = e => {
-    e.preventDefault();
-
-    if (validateGuess(guess) === false) {
-      setMessage(INVALID_GUESS_MESSAGE);
-      return;
-    }
-
-    if (guess === number) { // player wins
-      setMessage(CORRECT_GUESS_MESSAGE);
-      setGameOver(true);
-    } else {
-      setRemainingGuesses(remainingGuesses - 1);
-      const [ digitCount, locationCount ] = getMatchCounts(guess, number);
-      setMessage(createFeedbackMessage(digitCount, locationCount));
-    }
-  };
-  
-  const handleGuessChange = e => setGuess(e.target.value);
-
   const startNewGame = () => window.location.reload();
 
   return {
+    guess,
     number,
     remainingGuesses,
     message,
     history,
     gameOver,
-    handleGuessSubmit,
-    handleGuessChange,
+    setGuess,
+    setMessage,
+    setGameOver,
+    setRemainingGuesses,
     startNewGame
   };
 };
