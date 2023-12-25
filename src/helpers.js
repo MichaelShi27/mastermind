@@ -1,5 +1,16 @@
 import axios from 'axios';
 
+export const INVALID_GUESS_MESSAGE = 'Please enter 4 numbers.';
+export const CORRECT_GUESS_MESSAGE = 'Correct!';
+const ALL_INCORRECT_MESSAGE = 'All incorrect!';
+
+export const createFeedbackMessage = (digitCount, locationCount) => {
+  if (digitCount === 0) return ALL_INCORRECT_MESSAGE;
+  const digitPlural = digitCount > 1 ? 's' : '';
+  const locationPlural = locationCount !== 1 ? 's' : '';
+  return `${digitCount} correct number${digitPlural} and ${locationCount} correct location${locationPlural}`;
+};
+
 export const fetchNumber = () => (
   axios('/api/number')
     .then(({ data }) => data)
