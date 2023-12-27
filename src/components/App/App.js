@@ -1,6 +1,7 @@
 import useApp from './useApp.js';
 import Input from '../Input/Input.js';
 import History from '../History/History.js';
+import { Message, PlayAgainButton, AppContainer } from '../styles.js';
 
 const App = () => {
   const {
@@ -17,17 +18,15 @@ const App = () => {
     startNewGame
   } = useApp();
 
-  return (<>
-    {!gameOver && <Input {...{ guess, number, remainingGuesses, setGuess, setMessage, setGameOver, setRemainingGuesses }} />}
-    
-    <div>{number}</div>
-    <div>{message}</div>
-
-    {gameOver && <button onClick={startNewGame}>Play Again</button>}
-    <div>Remaining guesses: {remainingGuesses}</div>
-    <br></br>
-    <History {...{ history }} />
-  </>);
+  return (
+    <AppContainer>
+      {!gameOver && <Input {...{ guess, number, remainingGuesses, setGuess, setMessage, setGameOver, setRemainingGuesses }} />}
+      <Message>{message}</Message>
+      {gameOver && <PlayAgainButton onClick={startNewGame}>Play Again</PlayAgainButton>}
+      <div>Remaining guesses: {remainingGuesses}</div>
+      <History {...{ history }} />
+    </AppContainer>
+  );
 };
 
 export default App;
