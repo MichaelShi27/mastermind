@@ -1,7 +1,7 @@
 import inputLogic from "./logic.js";
 
-const Input = (inputProps) => {
-  const { handleGuessSubmit, handleGuessChange } = inputLogic(inputProps);
+const Input = appVariables => {
+  const { handleGuessSubmit, handleGuessChange } = inputLogic(appVariables);
 
   return (
     <form onSubmit={handleGuessSubmit}>
