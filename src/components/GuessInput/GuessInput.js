@@ -1,11 +1,11 @@
 import getGuessInputFunctions from "./logic.js";
 
 const GuessInput = appVariables => {
-  const { handleGuessSubmit, handleGuessChange } = getGuessInputFunctions(appVariables);
+  const { handleGuessSubmit } = getGuessInputFunctions(appVariables);
 
   return (
     <form onSubmit={handleGuessSubmit}>
-      <input name="query" onChange={handleGuessChange} />
+      <input name="guess" />
       <button>Guess</button>
     </form>
   );

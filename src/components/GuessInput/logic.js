@@ -2,11 +2,12 @@ import { validateGuess, createFeedbackMessage, getMatchCounts } from './helpers.
 import { MESSAGES } from '../../constants.js';
 
 const getGuessInputFunctions = ({ 
-  guess, number, remainingGuesses, setGuess, setMessage, setGameOver, setRemainingGuesses 
+  number, remainingGuesses, setMessage, setGameOver, setRemainingGuesses 
 }) => {
   const handleGuessSubmit = e => {
     e.preventDefault();
-
+    const guess = e.target.guess.value;
+    
     if (validateGuess(guess) === false) {
       setMessage(MESSAGES.INVALID_GUESS);
       return;
@@ -21,10 +22,7 @@ const getGuessInputFunctions = ({
       setMessage(createFeedbackMessage(digitCount, locationCount));
     }
   };
-
-  const handleGuessChange = e => setGuess(e.target.value);
-
-  return { handleGuessSubmit, handleGuessChange };
+  return { handleGuessSubmit };
 };
 
 export default getGuessInputFunctions;
