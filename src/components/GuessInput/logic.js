@@ -1,7 +1,7 @@
 import { validateGuess, createFeedbackMessage, getMatchCounts } from './helpers.js';
 import { MESSAGES } from '../../constants.js';
 
-const inputLogic = ({ 
+const getGuessInputFunctions = ({ 
   guess, number, remainingGuesses, setGuess, setMessage, setGameOver, setRemainingGuesses 
 }) => {
   const handleGuessSubmit = e => {
@@ -27,4 +27,4 @@ const inputLogic = ({
   return { handleGuessSubmit, handleGuessChange };
 };
 
-export default inputLogic;
+export default getGuessInputFunctions;

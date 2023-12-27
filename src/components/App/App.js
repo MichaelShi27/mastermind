@@ -1,5 +1,5 @@
 import useApp from './useApp.js';
-import Input from '../Input/Input.js';
+import GuessInput from '../GuessInput/GuessInput.js';
 import History from '../History/History.js';
 import { 
   Message, PlayAgainButton, GuessContainer, OptionsContainer, OptionsButton, OptionsInput
@@ -11,7 +11,7 @@ const App = () => {
 
   return (<>
     <GuessContainer>
-      {!gameOver && <Input {...appVariables} />}
+      {!gameOver && <GuessInput {...appVariables} />}
       <Message>{message}</Message>
       {gameOver && <PlayAgainButton onClick={startNewGame}>Play Again</PlayAgainButton>}
       <div>Remaining guesses: {remainingGuesses}</div>
