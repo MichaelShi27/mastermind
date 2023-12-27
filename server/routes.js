@@ -5,9 +5,9 @@ import axios from 'axios';
 router.get('/number', (req, res) => {
   axios('https://www.random.org/integers', {
     params: { 
-      num: 4, 
+      num: req.query.numberLength, 
       min: 0, 
-      max: 7, 
+      max: 9, 
       col: 1, 
       base: 10, 
       format: 'plain', 

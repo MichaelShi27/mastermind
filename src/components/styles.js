@@ -48,3 +48,9 @@ export const HistoryEntry = styled.div`
   padding: 8px;
   border-radius: 4px;
 `;
+
+// DigitsInput.js
+export const DigitsForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`;

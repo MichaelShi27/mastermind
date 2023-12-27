@@ -1,18 +1,26 @@
 import { MESSAGES } from '../../constants.js';
 
 /*
-  validateGuess verifies that the guess is exactly 4 characters long and that those 4 characters are numbers.
+  validateGuess verifies that the guess is the correct length and that only numbers are entered.
 
-  at first, I thought of using .reduce instead of .some, i.e. ... !guess.split('').reduce(
+  before the current implementation, I had 2 previous approaches using .some and .reduce to check if 
+  only numbers were entered:
+  
+  1. 
+  ... !guess.split('').reduce(
     (hasNonNumbers, char) => isNaN(Number(char)) || hasNonNumbers,
     false
   )
-  but I realized that .some is more efficient because it only iterates until it finds an element that fulfills
-  the condition and can thus end early, whereas .reduce requires iterating through the entire array. although 
-  the guess is only 4 chars long in our case, I still strive for the most efficient approach. also, the boolean 
-  logic is simpler with .some
+
+  2.
+  ... !guess.split('').some(char => isNaN(Number(char)))
+
+  I started with the .reduce approach, but then I realized that .some is more efficient because it only iterates  
+  until it finds an element that fulfills the condition and can thus end early, whereas .reduce requires iterating 
+  through the entire array. although the guess is of a trivial length, I still strive for the most efficient 
+  approach. also, the boolean logic is simpler with .some
 */
-export const validateGuess = guess => guess.length === 4 && !guess.split('').some(char => isNaN(Number(char)));
+export const validateGuess = (guess, numLength) => guess.length === numLength && !isNaN(Number(guess));
 
 export const createFeedbackMessage = (digitCount, locationCount) => {
   if (digitCount === 0) return MESSAGES.ALL_INCORRECT;
