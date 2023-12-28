@@ -3,3 +3,8 @@ export const MESSAGES = {
   LOSS: 'Game over. Better luck next time!',
   ALL_INCORRECT: 'All incorrect!'
 };
+
+export const DIGITS = {
+  MIN_VAL: 0,
+  MAX_VAL: 9
+};

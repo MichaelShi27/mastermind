@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchNumber } from "./helpers.js";
+import { fetchNumber, createRandomNumber } from "./helpers.js";
 import { MESSAGES } from "../../constants.js";
 
 const useApp = () => {
@@ -27,8 +27,14 @@ const useApp = () => {
 
   const startNewGame = numLength => {
     fetchNumber(numLength)
-      .then(data => setNumber(data.replace(/[\n]/g, ''))) // remove newline chars
-      .catch(console.log);
+      .then(data => {
+        // if 404 reponse, app will use its own random num, otherwise remove newline chars
+        const num = data === 404 ? createRandomNumber(numLength) : data.replace(/[\n]/g, '');
+        setNumber(num);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
     setGuess('');
     setRemainingGuesses(10);
