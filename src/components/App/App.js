@@ -1,7 +1,7 @@
 import useApp from './useApp.js';
 import GuessInput from '../GuessInput/GuessInput.js';
 import GuessHistory from '../GuessHistory/GuessHistory.js';
-import DigitsInput from '../DigitsInput/DigitsInput.js';
+import NumberLengthInput from '../NumberLengthInput/NumberLengthInput.js';
 import TotalGuessesInput from '../TotalGuessesInput/TotalGuessesInput.js';
 import PlayAgainButton from '../PlayAgainButton/PlayAgainButton.js';
 import { 
@@ -23,7 +23,7 @@ const App = () => {
     <OptionsContainer>
       Options:
       <OptionsButton>Show Hint</OptionsButton>
-      <DigitsInput {...appVariables} />
+      <NumberLengthInput {...appVariables} />
       <TotalGuessesInput {...appVariables} />
       <OptionsButton>Add Timer</OptionsButton>
     </OptionsContainer>
