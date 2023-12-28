@@ -4,8 +4,8 @@ const getDigitsInputFunctions = startNewGame => {
   const handleDigitsSubmit = e => {
     e.preventDefault();
 
-    const digitsEntry = e.target.digits.value;
-    if (validateDigits(Number(digitsEntry)) === false)
+    const digitsEntry = Number(e.target.digits.value);
+    if (validateDigits(digitsEntry) === false)
       return;
 
     startNewGame(digitsEntry);
