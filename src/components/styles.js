@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 // App.js
 export const Message = styled.div`
-  padding: 10px 0 20px;
+  margin: 0 0 30px;
   color: blue;
 `;
 
@@ -37,12 +37,17 @@ export const OptionsInput = styled.input`
   margin-bottom: 10px;
 `;
 
-// History.js
-export const HistoryContainer = styled.div`
+// GuessInput.js
+export const GuessForm = styled.form`
+  margin-bottom: 20px;
+`;
+
+// GuessHistory.js
+export const GuessHistoryContainer = styled.div`
   margin-top: 20px;
 `;
 
-export const HistoryEntry = styled.div`
+export const GuessHistoryEntry = styled.div`
   background-color: #EFEFEF;
   margin: 2px;
   padding: 8px;
