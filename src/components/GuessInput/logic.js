@@ -22,6 +22,7 @@ const getGuessInputFunctions = ({
       const feedback = createFeedbackMessage(digitCount, locationCount);
       setHistory(oldHistory => [ { guess, feedback }, ...oldHistory ]);
       setRemainingGuesses(remainingGuesses - 1);
+      setMessage('');
       e.target.guess.value = '';
     }
   };
