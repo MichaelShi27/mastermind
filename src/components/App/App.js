@@ -8,13 +8,13 @@ import {
 
 const App = () => {
   const appVariables = useApp();
-  const { gameOver, message, remainingGuesses, startNewGame } = appVariables;
+  const { gameOver, message, remainingGuesses, numberLength, startNewGame } = appVariables;
 
   return (<>
     <GuessContainer>
       <Message>{message}</Message>
       {!gameOver && <GuessInput {...appVariables} />}
-      {gameOver && <PlayAgainButton onClick={startNewGame}>Play Again</PlayAgainButton>}
+      {gameOver && <PlayAgainButton onClick={() => startNewGame(numberLength)}>Play Again</PlayAgainButton>}
       <div>Remaining guesses: {remainingGuesses}</div>
       <GuessHistory {...appVariables} />
     </GuessContainer>
