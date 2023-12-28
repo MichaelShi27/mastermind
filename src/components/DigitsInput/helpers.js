@@ -1,1 +1,7 @@
-export const validateDigits = digitsEntry => !isNaN(digitsEntry) && digitsEntry >= 4 && digitsEntry <= 8;
+import { OPTIONS } from '../../constants.js';
+
+export const validateDigits = numLengthEntry => (
+  !isNaN(numLengthEntry) && 
+  numLengthEntry >= OPTIONS.MIN_NUM_LENGTH && 
+  numLengthEntry <= OPTIONS.MAX_NUM_LENGTH
+);

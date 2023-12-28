@@ -54,8 +54,8 @@ export const GuessHistoryEntry = styled.div`
   border-radius: 4px;
 `;
 
-// DigitsInput.js
-export const DigitsForm = styled.form`
+// DigitsInput.js & TotalGuessesInput.js
+export const OptionsForm = styled.form`
   display: flex;
   flex-direction: column;
 `;

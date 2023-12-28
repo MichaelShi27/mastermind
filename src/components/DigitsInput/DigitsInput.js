@@ -1,14 +1,17 @@
-import { DigitsForm, OptionsInput } from "../styles.js";
+import { OptionsForm, OptionsInput } from "../styles.js";
 import getDigitsInputFunctions from "./logic.js";
+import { OPTIONS } from '../../constants.js';
 
-const DigitsInput = ({ numberLength, startNewGame }) => {
-  const { handleDigitsSubmit } = getDigitsInputFunctions(startNewGame);
+const DigitsInput = ({ numberLength, startNewGame, totalGuesses }) => {
+  const { handleDigitsSubmit } = getDigitsInputFunctions(startNewGame, totalGuesses);
 
   return (
-    <DigitsForm onSubmit={handleDigitsSubmit}>
-      <label>Enter number of digits to guess (4 - 8): </label>
+    <OptionsForm onSubmit={handleDigitsSubmit}>
+      <label>
+        Enter desired number of digits to guess ({OPTIONS.MIN_NUM_LENGTH} - {OPTIONS.MAX_NUM_LENGTH}):
+      </label>
       <OptionsInput name="digits" placeholder={numberLength} />
-    </DigitsForm>
+    </OptionsForm>
   );
 };
 

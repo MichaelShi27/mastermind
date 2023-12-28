@@ -1,6 +1,6 @@
 import { validateDigits } from './helpers.js';
 
-const getDigitsInputFunctions = startNewGame => {
+const getDigitsInputFunctions = (startNewGame, totalGuesses) => {
   const handleDigitsSubmit = e => {
     e.preventDefault();
 
@@ -8,7 +8,7 @@ const getDigitsInputFunctions = startNewGame => {
     if (validateDigits(digitsEntry) === false)
       return;
 
-    startNewGame(digitsEntry);
+    startNewGame(digitsEntry, totalGuesses);
     e.target.digits.value = '';
     e.target.digits.placeholder = digitsEntry;
   };

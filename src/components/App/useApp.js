@@ -9,8 +9,9 @@ const useApp = () => {
   const [ history, setHistory ] = useState([]);
   const [ gameOver, setGameOver ] = useState(false);
   const [ numberLength, setNumberLength ] = useState(4);
+  const [ totalGuesses, setTotalGuesses ] = useState(10);
 
-  useEffect(() => startNewGame(numberLength), []);
+  useEffect(() => startNewGame(numberLength, totalGuesses), []);
 
   useEffect(() => setNumberLength(number.length), [ number ]);
 
@@ -21,7 +22,7 @@ const useApp = () => {
     }
   }, [ remainingGuesses ]);
 
-  const startNewGame = numLength => {
+  const startNewGame = (numLength, guessesCount) => {
     fetchNumber(numLength)
       .then(data => {
         if (data.name === "Error") { // all errors except 404
@@ -35,7 +36,8 @@ const useApp = () => {
       })
       .catch(console.log);
 
-    setRemainingGuesses(10);
+    setTotalGuesses(guessesCount);
+    setRemainingGuesses(guessesCount);
     setMessage('');
     setHistory([]);
     setGameOver(false);
@@ -48,6 +50,7 @@ const useApp = () => {
     history,
     gameOver,
     numberLength,
+    totalGuesses,
     setMessage,
     setGameOver,
     setRemainingGuesses,

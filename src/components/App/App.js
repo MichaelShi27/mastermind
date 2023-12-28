@@ -2,6 +2,7 @@ import useApp from './useApp.js';
 import GuessInput from '../GuessInput/GuessInput.js';
 import GuessHistory from '../GuessHistory/GuessHistory.js';
 import DigitsInput from '../DigitsInput/DigitsInput.js';
+import TotalGuessesInput from '../TotalGuessesInput/TotalGuessesInput.js';
 import PlayAgainButton from '../PlayAgainButton/PlayAgainButton.js';
 import { 
   Message, GuessContainer, OptionsContainer, OptionsButton, OptionsInput
@@ -9,7 +10,7 @@ import {
 
 const App = () => {
   const appVariables = useApp();
-  const { gameOver, message, remainingGuesses, numberLength, startNewGame } = appVariables;
+  const { message, remainingGuesses } = appVariables;
 
   return (<>
     <GuessContainer>
@@ -22,9 +23,8 @@ const App = () => {
     <OptionsContainer>
       Options:
       <OptionsButton>Show Hint</OptionsButton>
-      <DigitsInput {...appVariables}/>
-      <label>Enter number of turns (5 - 15): </label>
-      <OptionsInput />
+      <DigitsInput {...appVariables} />
+      <TotalGuessesInput {...appVariables} />
       <OptionsButton>Add Timer</OptionsButton>
     </OptionsContainer>
   </>);
