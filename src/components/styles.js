@@ -6,7 +6,7 @@ export const Message = styled.div`
   color: blue;
 `;
 
-export const PlayAgainButton = styled.button`
+export const NewGameButton = styled.button`
   margin: 0 0 20px;
 `;
 
