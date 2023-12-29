@@ -1,4 +1,4 @@
-import { NewGameButton } from "../styles.js";
+import { NewGameButton } from "./styles.js";
 
 const PlayAgainButton = ({ numberLength, gameOver, totalGuesses, startNewGame }) => (
   gameOver ? (

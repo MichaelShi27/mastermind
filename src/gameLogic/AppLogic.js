@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { fetchNumber, createRandomNumber } from "./helpers.js";
-import { MESSAGES } from "../../constants.js";
+import AppHelpers from "./helpers/AppHelpers.js";
+import { MESSAGES } from "../constants.js";
 
 const useApp = () => {
   const [ number, setNumber ] = useState('0000');
@@ -21,6 +21,8 @@ const useApp = () => {
       setGameOver(true);
     }
   }, [ remainingGuesses ]);
+
+  const { fetchNumber, createRandomNumber } = new AppHelpers();
 
   const startNewGame = (numLength, guessesCount) => {
     fetchNumber(numLength)

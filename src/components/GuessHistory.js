@@ -1,4 +1,4 @@
-import { GuessHistoryContainer, GuessHistoryEntry } from '../styles.js';
+import { GuessHistoryContainer, GuessHistoryEntry } from './styles.js';
 
 const GuessHistory = ({ history }) => (
   <GuessHistoryContainer>

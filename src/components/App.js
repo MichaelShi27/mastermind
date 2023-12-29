@@ -1,12 +1,10 @@
-import useApp from './logic.js';
-import GuessInput from '../GuessInput/GuessInput.js';
-import GuessHistory from '../GuessHistory/GuessHistory.js';
-import NumberLengthInput from '../NumberLengthInput/NumberLengthInput.js';
-import TotalGuessesInput from '../TotalGuessesInput/TotalGuessesInput.js';
-import PlayAgainButton from '../PlayAgainButton/PlayAgainButton.js';
-import { 
-  Message, GuessContainer, OptionsContainer, OptionsButton, OptionsInput
-} from '../styles.js';
+import useApp from '../gameLogic/AppLogic.js';
+import GuessInput from './GuessInput/GuessInput.js';
+import GuessHistory from './GuessHistory.js';
+import NumberLengthInput from './NumberLengthInput/NumberLengthInput.js';
+import TotalGuessesInput from './TotalGuessesInput/TotalGuessesInput.js';
+import PlayAgainButton from './PlayAgainButton.js';
+import { Message, GuessContainer, OptionsContainer, OptionsButton } from './styles.js';
 
 const App = () => {
   const appVariables = useApp();
