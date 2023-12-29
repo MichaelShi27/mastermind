@@ -1,13 +1,13 @@
 import InputValidationHelpers from './helpers/InputValidationHelpers.js';
 import { MESSAGES } from '../constants.js';
 import MessageHelpers from './helpers/MessageHelpers.js';
-import GuessLogic from './GuessLogic.js';
+import AnalyzeGuess from './AnalyzeGuess.js';
 
 const { 
   validateTotalGuesses, validateNumberLength, validateGuess
 } = new InputValidationHelpers();
 const { createFeedbackMessage, createInvalidGuessMessage } = new MessageHelpers();
-const { getMatchCounts } = new GuessLogic();
+const { getMatchCounts } = new AnalyzeGuess();
 
 /* 
   this class handles the submit functionality of the various input fields of the app, 
@@ -44,11 +44,13 @@ class SubmitHandlers {
   handleNumberLengthSubmit = (e, startNewGame, totalGuesses) => this.#handleOptionsSubmit(
       e, startNewGame, totalGuesses, this.#NUM_LENGTH, validateNumberLength);
 
-  handleGuessSubmit = (e, { remainingGuesses, setMessage, setGameOver, setRemainingGuesses,
-      number, numberLength, setHistory }) => {
+  handleTextGuessSubmit = (e, appVariables) => {
     e.preventDefault();
-    const guess = e.target.guess.value;
+    this.handleGuessSubmit(e.target.guess, appVariables, e.target.guess.value);
+  };
 
+  handleGuessSubmit = (inputField, { remainingGuesses, setMessage, setGameOver, setRemainingGuesses,
+      number, numberLength, setHistory }, guess) => {
     if (validateGuess(guess, numberLength) === false) {
       setMessage(createInvalidGuessMessage(numberLength));
       return;
@@ -63,7 +65,7 @@ class SubmitHandlers {
       setHistory(oldHistory => [ { guess, feedback }, ...oldHistory ]);
       setRemainingGuesses(remainingGuesses - 1);
       setMessage('');
-      e.target.guess.value = '';
+      inputField.value = '';
     }
   };
 }

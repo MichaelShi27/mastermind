@@ -1,14 +1,17 @@
 import SubmitHandlers from '../gameLogic/SubmitHandlers.js';
+import SpeechRecognition from '../gameLogic/SpeechRecognition.js';
 import { GuessForm } from './styles.js';
 
 const GuessInput = appVariables => {
-  const { gameOver } = appVariables;
-  const { handleGuessSubmit } = new SubmitHandlers();
-  const onGuessSubmit = e => handleGuessSubmit(e, appVariables);
+  const { handleTextGuessSubmit } = new SubmitHandlers();
+  const onGuessSubmit = e => handleTextGuessSubmit(e, appVariables);
 
-  return gameOver ? null : (
+  const { listenForSpeech } = new SpeechRecognition();
+  const handleKeyDown = e => e.key === 'Shift' && listenForSpeech(e, appVariables);
+
+  return appVariables.gameOver ? null : (
     <GuessForm onSubmit={onGuessSubmit}>
-      <input name="guess" />
+      <input name="guess" onKeyDown={handleKeyDown} />
       <button>Guess</button>
     </GuessForm>
   );

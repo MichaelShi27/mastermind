@@ -8,10 +8,12 @@ import { Message, GuessContainer, OptionsContainer, OptionsButton } from './styl
 
 const App = () => {
   const appVariables = useApp();
-  const { message, remainingGuesses } = appVariables;
+  const { message, remainingGuesses, numberLength } = appVariables;
 
   return (<>
     <GuessContainer>
+      <div>To make a guess, type a {numberLength}-digit number or press SHIFT</div>
+      <div> and speak the number into your mic:</div>
       <Message>{message}</Message>
       <GuessInput {...appVariables} />
       <PlayAgainButton {...appVariables} />

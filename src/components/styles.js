@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 // App.js
 export const Message = styled.div`
-  margin: 0 0 30px;
+  margin: 20px 0 20px;
   color: blue;
 `;
 

@@ -1,4 +1,4 @@
-class GuessLogic {
+class AnalyzeGuess {
   getMatchCounts = (guess, num) => {
     const digitCount = this.#getDigitMatchCount(guess, num);
     if (digitCount === 0) return [ 0, 0 ];
@@ -33,4 +33,4 @@ class GuessLogic {
   };
 }
 
-export default GuessLogic;
+export default AnalyzeGuess;
