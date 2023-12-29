@@ -1,7 +1,8 @@
 import { OPTIONS } from '../../constants.js';
 
 class InputValidators {
-  static validateGuess = (guess, numLength) => guess.length === numLength && !isNaN(Number(guess));
+  static validateGuess = (guess, numLength) => guess.length === numLength 
+      && !isNaN(Number(guess));
   
   static validateTotalGuesses = totalGuessesEntry => (
     !isNaN(totalGuessesEntry) && 

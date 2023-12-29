@@ -9,8 +9,8 @@ const TotalGuessesInput = ({ totalGuesses, startNewGame, numberLength }) => {
   return (
     <OptionsForm onSubmit={onTotalGuessesSubmit}>
       <label>
-        Enter desired number of total guesses 
-        ({OPTIONS.MIN_TOTAL_GUESSES} - {OPTIONS.MAX_TOTAL_GUESSES}):
+        Enter desired number <br />
+        of total guesses ({OPTIONS.MIN_TOTAL_GUESSES} - {OPTIONS.MAX_TOTAL_GUESSES}):
       </label>
       <OptionsInput name="totalGuesses" placeholder={totalGuesses} />
     </OptionsForm>

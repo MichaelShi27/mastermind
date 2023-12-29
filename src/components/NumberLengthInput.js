@@ -9,7 +9,8 @@ const NumberLengthInput = ({ numberLength, startNewGame, totalGuesses }) => {
   return (
     <OptionsForm onSubmit={onNumberLengthSubmit}>
       <label>
-        Enter desired number of digits to guess ({OPTIONS.MIN_NUM_LENGTH} - {OPTIONS.MAX_NUM_LENGTH}):
+        Enter desired number <br />
+        of digits to guess ({OPTIONS.MIN_NUM_LENGTH} - {OPTIONS.MAX_NUM_LENGTH}):
       </label>
       <OptionsInput name="numLength" placeholder={numberLength} />
     </OptionsForm>

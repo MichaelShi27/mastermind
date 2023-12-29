@@ -21,7 +21,7 @@ const App = () => {
       <GuessHistory {...appVariables} />
     </GuessContainer>
     <OptionsContainer>
-      Options:
+      Game Options:
       <OptionsButton>Show Hint</OptionsButton>
       <NumberLengthInput {...appVariables} />
       <TotalGuessesInput {...appVariables} />
