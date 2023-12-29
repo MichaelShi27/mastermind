@@ -1,11 +1,14 @@
 import { 
-  validateGuess, createFeedbackMessage, getMatchCounts, createInvalidGuessMessage 
+  createFeedbackMessage, getMatchCounts, createInvalidGuessMessage 
 } from './helpers.js';
 import { MESSAGES } from '../../constants.js';
+import InputValidationHelpers from '../../gameLogic/helpers/InputValidationHelpers.js';
 
 const getGuessInputFunctions = ({ 
   number, remainingGuesses, setMessage, setGameOver, setRemainingGuesses, numberLength, setHistory
 }) => {
+  const { validateGuess } = new InputValidationHelpers();
+  
   const handleGuessSubmit = e => {
     e.preventDefault();
     const guess = e.target.guess.value;

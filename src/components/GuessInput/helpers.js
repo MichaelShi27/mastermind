@@ -1,7 +1,5 @@
 import { MESSAGES } from '../../constants.js';
 
-export const validateGuess = (guess, numLength) => guess.length === numLength && !isNaN(Number(guess));
-
 export const createFeedbackMessage = (digitCount, locationCount) => {
   if (digitCount === 0) return MESSAGES.ALL_INCORRECT;
   const digitPlural = digitCount > 1 ? 's' : '';

@@ -1,8 +1,8 @@
-import useApp from '../gameLogic/AppLogic.js';
+import useApp from '../gameLogic/useApp.js';
 import GuessInput from './GuessInput/GuessInput.js';
 import GuessHistory from './GuessHistory.js';
-import NumberLengthInput from './NumberLengthInput/NumberLengthInput.js';
-import TotalGuessesInput from './TotalGuessesInput/TotalGuessesInput.js';
+import NumberLengthInput from './NumberLengthInput.js';
+import TotalGuessesInput from './TotalGuessesInput.js';
 import PlayAgainButton from './PlayAgainButton.js';
 import { Message, GuessContainer, OptionsContainer, OptionsButton } from './styles.js';
 

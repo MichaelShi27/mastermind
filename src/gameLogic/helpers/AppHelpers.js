@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { DIGITS } from '../../constants.js';
 
+// helper functions used only in App.js
 class AppHelpers {
   fetchNumber = numberLength => (
     axios('/api/number', { params: { numberLength } })

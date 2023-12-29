@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import AppHelpers from "./helpers/AppHelpers.js";
 import { MESSAGES } from "../constants.js";
 
+/*
+  this is a custom React hook to handle the logic for App.js,
+  i.e. the main/overarching logic of the app
+*/
 const useApp = () => {
   const [ number, setNumber ] = useState('0000');
   const [ remainingGuesses, setRemainingGuesses ] = useState(10);
