@@ -1,4 +1,4 @@
-import { validateGuess } from "../../components/GuessInput/helpers.js";
+import InputValidators from "../../gameLogic/helpers/InputValidators.js";
 import TestUtils from "../TestUtils.js";
 
 const testCases = [ 
@@ -21,4 +21,4 @@ const testCases = [
 ];
 
 export const validateGuessObj = TestUtils.createTestObj('validateGuess', 
-    validateGuess, testCases);
+    InputValidators.validateGuess, testCases);

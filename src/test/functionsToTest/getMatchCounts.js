@@ -1,5 +1,5 @@
-import { getMatchCounts } from "../../components/GuessInput/helpers.js";
 import TestUtils from "../TestUtils.js";
+import AnalyzeGuess from '../../gameLogic/AnalyzeGuess.js';
 
 const testCases = [
   { idx: 1, arguments: [ '0135', '2246' ], expectedResult: [ 0, 0 ] },
@@ -19,8 +19,8 @@ const testCases = [
   { idx: 15, arguments: [ '123456', '777777' ], expectedResult: [ 0, 0 ] },
   { idx: 16, arguments: [ '123456', '777776' ], expectedResult: [ 1, 1 ] },
   // this last test is supposed to fail
-  { idx: 16, arguments: [ '123456', '777776' ], expectedResult: [ 1, 0 ] } 
+  { idx: 17, arguments: [ '123456', '777776' ], expectedResult: [ 1, 0 ] } 
 ];
 
 export const getMatchCountsObj = TestUtils.createTestObj('getMatchCounts', 
-    getMatchCounts, testCases);
+    AnalyzeGuess.getMatchCounts, testCases);

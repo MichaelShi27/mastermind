@@ -1,6 +1,5 @@
 import { OPTIONS } from '../../constants.js';
-
-import { validateNumberLength } from "../../components/NumberLengthInput/helpers.js";
+import InputValidators from "../../gameLogic/helpers/InputValidators.js";
 import TestUtils from "../TestUtils.js";
 
 const testCases = [
@@ -13,4 +12,4 @@ const testCases = [
 ];
 
 export const validateNumberLengthObj = TestUtils.createTestObj('validateNumberLength', 
-    validateNumberLength, testCases);
+    InputValidators.validateNumberLength, testCases);

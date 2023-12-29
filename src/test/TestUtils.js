@@ -15,7 +15,8 @@ class TestUtils {
         failCount++;
       }
     }
-    console.log("\x1b[0m", `Done testing ${funcName}: ${failCount} failed, ${testCases.length - failCount} succeeded\n`);
+    console.log("\x1b[0m", `  Done testing ${funcName}:
+        ${failCount} failed, ${testCases.length - failCount} succeeded\n`);
   };
 }
 
