@@ -1,12 +1,12 @@
 class AnalyzeGuess {
-  getMatchCounts = (guess, num) => {
+  static getMatchCounts = (guess, num) => {
     const digitCount = this.#getDigitMatchCount(guess, num);
     if (digitCount === 0) return [ 0, 0 ];
   
     return [ digitCount, this.#getLocationMatchCount(guess, num) ];
   };
   
-  #getDigitMatchCount = (guess, num) => {
+  static #getDigitMatchCount = (guess, num) => {
     let digitMatchCount = 0;
   
     const digitMap = {};
@@ -22,7 +22,7 @@ class AnalyzeGuess {
     return digitMatchCount;
   };
   
-  #getLocationMatchCount = (guess, num) => {
+  static #getLocationMatchCount = (guess, num) => {
     let locationMatchCount = 0;
   
     for (const [ idx, digit ] of num.split('').entries())

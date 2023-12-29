@@ -26,17 +26,16 @@ const useApp = () => {
     }
   }, [ remainingGuesses ]);
 
-  const { fetchNumber, createRandomNumber } = new AppHelpers();
-
   const startNewGame = (numLength, guessesCount) => {
-    fetchNumber(numLength)
+    AppHelpers.fetchNumber(numLength)
       .then(data => {
         if (data.name === "Error") { // all errors except 404
           setMessage(`Sorry, looks like there's a problem: ${data.message}`);
           setGameOver(true);
         } else {
-          // if 404 response, app will use its own random num, otherwise remove newline chars
-          const num = data === 404 ? createRandomNumber(numLength) : data.replace(/[\n]/g, '');
+          // if 404 response, app will create & use its own random num
+          const num = data === 404 ? AppHelpers.createRandomNumber(numLength) 
+              : data.replace(/[\n]/g, ''); // otherwise, remove newline chars
           setNumber(num);
         }
       })

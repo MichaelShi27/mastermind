@@ -1,13 +1,7 @@
-import InputValidationHelpers from './helpers/InputValidationHelpers.js';
+import InputValidators from './helpers/InputValidators.js';
 import { MESSAGES } from '../constants.js';
 import MessageHelpers from './helpers/MessageHelpers.js';
 import AnalyzeGuess from './AnalyzeGuess.js';
-
-const { 
-  validateTotalGuesses, validateNumberLength, validateGuess
-} = new InputValidationHelpers();
-const { createFeedbackMessage, createInvalidGuessMessage } = new MessageHelpers();
-const { getMatchCounts } = new AnalyzeGuess();
 
 /* 
   this class handles the submit functionality of the various input fields of the app, 
@@ -39,20 +33,20 @@ class SubmitHandlers {
   }
 
   handleTotalGuessesSubmit = (e, startNewGame, numLength) => this.#handleOptionsSubmit(
-      e, startNewGame, numLength, this.#TOTAL_GUESSES, validateTotalGuesses);
+      e, startNewGame, numLength, this.#TOTAL_GUESSES, InputValidators.validateTotalGuesses);
 
   handleNumberLengthSubmit = (e, startNewGame, totalGuesses) => this.#handleOptionsSubmit(
-      e, startNewGame, totalGuesses, this.#NUM_LENGTH, validateNumberLength);
+      e, startNewGame, totalGuesses, this.#NUM_LENGTH, InputValidators.validateNumberLength);
 
   handleTextGuessSubmit = (e, appVariables) => {
     e.preventDefault();
     this.handleGuessSubmit(e.target.guess, appVariables, e.target.guess.value);
   };
 
-  handleGuessSubmit = (inputField, { remainingGuesses, setMessage, setGameOver, setRemainingGuesses,
-      number, numberLength, setHistory }, guess) => {
-    if (validateGuess(guess, numberLength) === false) {
-      setMessage(createInvalidGuessMessage(numberLength));
+  handleGuessSubmit = (inputField, { remainingGuesses, setMessage, setGameOver,
+      setRemainingGuesses, number, numberLength, setHistory }, guess) => {
+    if (InputValidators.validateGuess(guess, numberLength) === false) {
+      setMessage(MessageHelpers.createInvalidGuessMessage(numberLength));
       return;
     }
 
@@ -60,8 +54,8 @@ class SubmitHandlers {
       setMessage(MESSAGES.CORRECT_GUESS);
       setGameOver(true);
     } else {
-      const [ digitCount, locationCount ] = getMatchCounts(guess, number);
-      const feedback = createFeedbackMessage(digitCount, locationCount);
+      const [ digitCount, locationCount ] = AnalyzeGuess.getMatchCounts(guess, number);
+      const feedback = MessageHelpers.createFeedbackMessage(digitCount, locationCount);
       setHistory(oldHistory => [ { guess, feedback }, ...oldHistory ]);
       setRemainingGuesses(remainingGuesses - 1);
       setMessage('');
