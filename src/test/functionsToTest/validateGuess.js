@@ -1,7 +1,5 @@
-
-
-import { validateGuess } from "../components/GuessInput/helpers.js";
-import { createTestObj } from "./createTestObj.js";
+import { validateGuess } from "../../components/GuessInput/helpers.js";
+import TestUtils from "../TestUtils.js";
 
 const testCases = [ 
   { idx: 1, arguments: [ '1234', 4 ], expectedResult: true },
@@ -22,4 +20,5 @@ const testCases = [
   { idx: 16, arguments: [ '11111', 4 ], expectedResult: false }
 ];
 
-export const validateGuessObj = createTestObj('validateGuess', validateGuess, testCases);
+export const validateGuessObj = TestUtils.createTestObj('validateGuess', 
+    validateGuess, testCases);

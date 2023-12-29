@@ -1,7 +1,7 @@
-import { OPTIONS } from '../constants.js';
+import { OPTIONS } from '../../constants.js';
 
-import { validateNumberLength } from "../components/NumberLengthInput/helpers.js";
-import { createTestObj } from "./createTestObj.js";
+import { validateNumberLength } from "../../components/NumberLengthInput/helpers.js";
+import TestUtils from "../TestUtils.js";
 
 const testCases = [
   { idx: 1, arguments: [ 'a' ], expectedResult: false },
@@ -12,4 +12,5 @@ const testCases = [
   { idx: 6, arguments: [ OPTIONS.MAX_NUM_LENGTH + 1 ], expectedResult: false }
 ];
 
-export const validateNumberLengthObj = createTestObj('validateNumberLength', validateNumberLength, testCases);
+export const validateNumberLengthObj = TestUtils.createTestObj('validateNumberLength', 
+    validateNumberLength, testCases);

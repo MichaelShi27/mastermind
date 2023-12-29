@@ -1,5 +1,5 @@
-import { getMatchCounts } from "../components/GuessInput/helpers.js";
-import { createTestObj } from "./createTestObj.js";
+import { getMatchCounts } from "../../components/GuessInput/helpers.js";
+import TestUtils from "../TestUtils.js";
 
 const testCases = [
   { idx: 1, arguments: [ '0135', '2246' ], expectedResult: [ 0, 0 ] },
@@ -18,7 +18,9 @@ const testCases = [
   { idx: 14, arguments: [ '654321', '123456' ], expectedResult: [ 6, 0 ] },
   { idx: 15, arguments: [ '123456', '777777' ], expectedResult: [ 0, 0 ] },
   { idx: 16, arguments: [ '123456', '777776' ], expectedResult: [ 1, 1 ] },
-  { idx: 16, arguments: [ '123456', '777776' ], expectedResult: [ 1, 0 ] } // this test is supposed to fail
+  // this last test is supposed to fail
+  { idx: 16, arguments: [ '123456', '777776' ], expectedResult: [ 1, 0 ] } 
 ];
 
-export const getMatchCountsObj = createTestObj('getMatchCounts', getMatchCounts, testCases);
+export const getMatchCountsObj = TestUtils.createTestObj('getMatchCounts', 
+    getMatchCounts, testCases);

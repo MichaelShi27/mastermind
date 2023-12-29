@@ -1,7 +1,7 @@
-import { testAFunction } from "./testAFunction.js";
-import { getMatchCountsObj } from "./getMatchCounts.js";
-import { validateGuessObj } from "./validateGuess.js";
-import { validateNumberLengthObj } from "./validateNumberLength.js";
+import TestUtils from "./TestUtils.js";
+import { getMatchCountsObj } from "./functionsToTest/getMatchCounts.js";
+import { validateGuessObj } from "./functionsToTest/validateGuess.js";
+import { validateNumberLengthObj } from "./functionsToTest/validateNumberLength.js";
 
 const testObjs = [
   getMatchCountsObj,
@@ -10,4 +10,4 @@ const testObjs = [
 ];
 
 for (const obj of testObjs)
-  testAFunction(obj);
+  TestUtils.testAFunction(obj);
