@@ -17,7 +17,8 @@ const testCases = [
   { idx: 13, arguments: [ '33333', '34323' ], expectedResult: [ 3, 3 ] },
   { idx: 14, arguments: [ '654321', '123456' ], expectedResult: [ 6, 0 ] },
   { idx: 15, arguments: [ '123456', '777777' ], expectedResult: [ 0, 0 ] },
-  { idx: 16, arguments: [ '123456', '777776' ], expectedResult: [ 1, 1 ] }
+  { idx: 16, arguments: [ '123456', '777776' ], expectedResult: [ 1, 1 ] },
+  { idx: 16, arguments: [ '123456', '777776' ], expectedResult: [ 1, 0 ] } // this test is supposed to fail
 ];
 
 export const getMatchCountsObj = createTestObj('getMatchCounts', getMatchCounts, testCases);

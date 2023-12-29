@@ -9,6 +9,8 @@ export const createFeedbackMessage = (digitCount, locationCount) => {
   return `${digitCount} correct number${digitPlural} and ${locationCount} correct location${locationPlural}`;
 };
 
+export const createInvalidGuessMessage = numberLength => `Please enter ${numberLength} numbers.`;
+
 export const getMatchCounts = (guess, num) => {
   const digitCount = getDigitMatchCount(guess, num);
   if (digitCount === 0) return [ 0, 0 ];

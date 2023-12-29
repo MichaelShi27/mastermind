@@ -1,4 +1,4 @@
-import useApp from './useApp.js';
+import useApp from './logic.js';
 import GuessInput from '../GuessInput/GuessInput.js';
 import GuessHistory from '../GuessHistory/GuessHistory.js';
 import NumberLengthInput from '../NumberLengthInput/NumberLengthInput.js';

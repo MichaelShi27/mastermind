@@ -7,8 +7,6 @@ export const fetchNumber = numberLength => (
     .catch(console.log)
 );
 
-export const createInvalidGuessMessage = numberLength => `Please enter ${numberLength} numbers.`;
-
 export const createRandomNumber = numLength => {
   let str = '';
   for (let i = 0; i < numLength; i++)

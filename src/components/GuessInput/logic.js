@@ -1,6 +1,7 @@
-import { validateGuess, createFeedbackMessage, getMatchCounts } from './helpers.js';
+import { 
+  validateGuess, createFeedbackMessage, getMatchCounts, createInvalidGuessMessage 
+} from './helpers.js';
 import { MESSAGES } from '../../constants.js';
-import { createInvalidGuessMessage } from '../App/helpers.js';
 
 const getGuessInputFunctions = ({ 
   number, remainingGuesses, setMessage, setGameOver, setRemainingGuesses, numberLength, setHistory
