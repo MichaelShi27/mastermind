@@ -1,5 +1,5 @@
 import useApp from '../gameLogic/useApp.js';
-import GuessInput from './GuessInput/GuessInput.js';
+import GuessInput from './GuessInput.js';
 import GuessHistory from './GuessHistory.js';
 import NumberLengthInput from './NumberLengthInput.js';
 import TotalGuessesInput from './TotalGuessesInput.js';
