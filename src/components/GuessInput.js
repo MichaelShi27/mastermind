@@ -9,7 +9,7 @@ const GuessInput = appVariables => {
   const { listenForSpeech } = new SpeechRecognition();
   const handleKeyDown = e => e.key === 'Shift' && listenForSpeech(e, appVariables);
 
-  return appVariables.gameOver ? null : (
+  return appVariables.gameOver === true ? null : (
     <GuessForm onSubmit={onGuessSubmit}>
       <input name="guess" onKeyDown={handleKeyDown} />
       <button>Guess</button>
