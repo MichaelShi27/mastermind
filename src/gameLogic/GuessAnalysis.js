@@ -39,6 +39,34 @@ class GuessAnalysis {
   
     return locationMatchCount;
   };
+
+  /*
+    alternate, unused version of countMatches that counts both
+    digit & location matches at once
+  */
+  #countMatchesAlternate = () => {
+    let digitMatchCount = 0;
+    let locationMatchCount = 0;
+    const seen = {};
+  
+    for (const [ idx, digit ] of this.#num.split('').entries())
+      seen[digit] = { 
+        ...(seen[digit] || {}),
+        count: 1 + (seen[digit]?.count || 0), 
+        [idx]: true
+      };
+
+    for (const [ idx, digit ] of this.#guess.split('').entries()) {
+      if (seen[digit]?.count > 0) {
+        seen[digit].count--;
+        digitMatchCount++;
+      }
+      if (seen[digit]?.[idx] === true)
+        locationMatchCount++;
+    }
+    
+    return [ digitMatchCount, locationMatchCount ];
+  };
 }
 
 export default GuessAnalysis;
