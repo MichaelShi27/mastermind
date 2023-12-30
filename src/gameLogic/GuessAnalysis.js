@@ -1,7 +1,10 @@
 class GuessAnalysis {
+  #guess;
+  #num;
+
   constructor(guess, num) {
-    this.guess = guess;
-    this.num = num;
+    this.#guess = guess;
+    this.#num = num;
   }
   
   countMatches = () => {
@@ -15,10 +18,10 @@ class GuessAnalysis {
     let digitMatchCount = 0;
   
     const digitMap = {};
-    for (const digit of this.num)
+    for (const digit of this.#num)
       digitMap[digit] = 1 + (digitMap[digit] || 0);
     
-    for (const digit of this.guess)
+    for (const digit of this.#guess)
       if (digitMap[digit] > 0) {
         digitMap[digit]--;
         digitMatchCount++;
@@ -30,8 +33,8 @@ class GuessAnalysis {
   #countLocationMatches = () => {
     let locationMatchCount = 0;
   
-    for (const [ idx, digit ] of this.num.split('').entries())
-      if (this.guess[idx] === digit)
+    for (const [ idx, digit ] of this.#num.split('').entries())
+      if (this.#guess[idx] === digit)
         locationMatchCount++;
   
     return locationMatchCount;
