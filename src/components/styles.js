@@ -38,10 +38,12 @@ export const OptionsInput = styled.input`
   margin-bottom: 10px;
 `;
 
+// HighScores.js
 export const HighScoresContainer = styled.div`
-  padding: 20px;
+  padding: 30px;
   display: inline-block;
   background-color: ${LIGHT_GRAY};
+  vertical-align: top;
 `;
 
 // GuessInput.js
@@ -54,7 +56,8 @@ export const GuessHistoryContainer = styled.div`
   margin-top: 20px;
 `;
 
-export const GuessHistoryEntry = styled.div`
+// GuessHistory.js & HighScores.js
+export const ListEntry = styled.div`
   background-color: #EFEFEF;
   margin: 2px;
   padding: 8px;
