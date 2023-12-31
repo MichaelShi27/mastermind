@@ -4,6 +4,7 @@ import GuessHistory from './GuessHistory.js';
 import NumberLengthInput from './NumberLengthInput.js';
 import TotalGuessesInput from './TotalGuessesInput.js';
 import PlayAgainButton from './PlayAgainButton.js';
+import HighScores from './HighScores.js';
 import { Message, GuessContainer, OptionsContainer, OptionsButton } from './styles.js';
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
       <TotalGuessesInput {...appVariables} />
       <OptionsButton>Add Timer</OptionsButton>
     </OptionsContainer>
+    <HighScores {...appVariables} />
   </>);
 };
 

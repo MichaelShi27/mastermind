@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const LIGHT_GRAY = '#DCDCDC';
+
 // App.js
 export const Message = styled.div`
   margin: 20px 0 20px;
@@ -19,15 +21,14 @@ export const GuessContainer = styled.div`
   display: inline-block;
   padding: 50px;
   width: fit-content;
-  background-color: #DCDCDC;
+  background-color: ${LIGHT_GRAY};
 `;
 
 export const OptionsContainer = styled.div`
   display: inline-flex;
   margin: 0 20px;
   padding: 30px;
-  // width: fit-content;
-  background-color: #DCDCDC;
+  background-color: ${LIGHT_GRAY};
   flex-direction: column;
   vertical-align: top;
 `;
@@ -35,6 +36,12 @@ export const OptionsContainer = styled.div`
 export const OptionsInput = styled.input`
   width: 130px;
   margin-bottom: 10px;
+`;
+
+export const HighScoresContainer = styled.div`
+  padding: 20px;
+  display: inline-block;
+  background-color: ${LIGHT_GRAY};
 `;
 
 // GuessInput.js
