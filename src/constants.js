@@ -1,5 +1,6 @@
 export const MESSAGES = {
   CORRECT_GUESS: 'Correct! Great job! 🥳',
+  NEW_HIGH_SCORE: 'Correct! And you got a new high score! 🔥🔥',
   LOSS: 'Game over. Better luck next time!',
   ALL_INCORRECT: 'All incorrect!'
 };

@@ -19,7 +19,6 @@ class HighScores {
 
     while (currentNode !== null) {
       insertLocation = currentNode;
-
       const { data: { numLength, guessesUsed } } = currentNode;
       if (this.numLength < numLength) break;
       if (this.numLength === numLength 
@@ -36,7 +35,11 @@ class HighScores {
     if (insertLocation === this.highScores.tail 
         && this.highScores.length === this.#MAX_SCORES_COUNT)
       return null;
-    this.highScores.insertAfterNode(insertLocation);
+
+    this.highScores.insertAfterNode({
+      guessesUsed: this.guessesUsed,
+      numLength: this.numLength
+    }, insertLocation);
     return this.highScores;
   };
 }

@@ -1,15 +1,19 @@
 import { HighScoresContainer, GuessHistoryEntry } from './styles.js';
 
-const HighScores = ({ highScores }) => (
-  <HighScoresContainer>
-    <div>High Scores:</div>
-    {/* {highScores.map(({}, idx) => (
-      <GuessHistoryEntry key={idx}>
-        <span>{}</span> ---
-        <span>{` ${}`}</span>
-      </GuessHistoryEntry>
-    ))} */}
-  </HighScoresContainer>
-);
+const HighScores = ({ highScores }) => {
+  const scoresArray = highScores.convertToArray();
+  return (
+    <HighScoresContainer>
+      <div>High Scores:</div>
+      {scoresArray.map((score, idx) => (
+        <GuessHistoryEntry key={idx}>
+          <span>{score.data.guessesUsed}</span> ---
+          <span>{` `}</span>
+        </GuessHistoryEntry>
+      ))}
+      {scoresArray.length === 0 && <div>None yet.</div>}
+    </HighScoresContainer>
+  );
+};
 
 export default HighScores;

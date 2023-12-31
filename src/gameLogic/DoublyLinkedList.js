@@ -29,6 +29,16 @@ export class DoublyLinkedList {
     this.tail = node;
     this.length++;
   }
+
+  convertToArray = () => {
+    const arr = [];
+    let currentNode = this.head;
+    while (currentNode !== null) {
+      arr.push(currentNode);
+      currentNode = currentNode.next;
+    }
+    return arr;
+  };
 }
 
 export class DLLNode {

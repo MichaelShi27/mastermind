@@ -42,23 +42,15 @@ class SubmitHandlers {
     this.handleGuessSubmit(e.target.guess, appVariables, e.target.guess.value);
   };
 
-  handleGuessSubmit = (inputField, { remainingGuesses, setMessage, endGame,
-      setRemainingGuesses, number, numberLength, setHistory }, guess) => {
+  handleGuessSubmit = (inputField, { remainingGuesses, setMessage, setGuess,
+      setRemainingGuesses, numberLength }, guess) => {
     if (InputValidators.validateGuess(guess, numberLength) === false) {
       setMessage(MessageHelpers.createInvalidGuessMessage(numberLength));
       return;
     }
-
-    if (guess === number) // player wins
-      endGame(false);
-    else {
-      const [ digitCount, locationCount ] = new GuessAnalysis(guess, number).countMatches();
-      const feedback = MessageHelpers.createFeedbackMessage(digitCount, locationCount);
-      setHistory(oldHistory => [ { guess, feedback }, ...oldHistory ]);
-      setRemainingGuesses(remainingGuesses - 1);
-      setMessage('');
-      inputField.value = '';
-    }
+    setRemainingGuesses(remainingGuesses - 1);
+    setGuess(guess);
+    inputField.value = '';
   };
 }
 

@@ -3,6 +3,8 @@ import AppHelpers from "./helpers/AppHelpers.js";
 import { MESSAGES } from "../constants.js";
 import HighScores from "./HighScores.js";
 import { DoublyLinkedList } from "./DoublyLinkedList.js";
+import GuessAnalysis from './GuessAnalysis.js';
+import MessageHelpers from './helpers/MessageHelpers.js';
 
 /*
   this is a custom React hook to handle the logic for App.js,
@@ -10,6 +12,7 @@ import { DoublyLinkedList } from "./DoublyLinkedList.js";
 */
 const useApp = () => {
   const [ number, setNumber ] = useState('0000');
+  const [ guess, setGuess ] = useState('');
   const [ remainingGuesses, setRemainingGuesses ] = useState(10);
   const [ message, setMessage ] = useState('');
   const [ history, setHistory ] = useState([]);
@@ -22,10 +25,7 @@ const useApp = () => {
 
   useEffect(() => setNumberLength(number.length), [ number ]);
 
-  useEffect(() => {
-    if (remainingGuesses === 0) // player loses
-      endGame(true);
-  }, [ remainingGuesses ]);
+  useEffect(() => analyzeGuess(), [ remainingGuesses ]);
 
   const startNewGame = (numLength, guessesCount) => {
     AppHelpers.fetchNumber(numLength)
@@ -44,6 +44,7 @@ const useApp = () => {
 
     setTotalGuesses(guessesCount);
     setRemainingGuesses(guessesCount);
+    setGuess('');
     setMessage('');
     setHistory([]);
     setGameOver(false);
@@ -56,13 +57,28 @@ const useApp = () => {
     else {
       const highScoresObj = new HighScores(highScores, 
           totalGuesses - remainingGuesses, numberLength);
-      const insertionLocation = highScoresObj.getInsertLocation();
-      const updatedScores = highScoresObj.getUpdatedScores(insertionLocation);
+      const insertLocation = highScoresObj.getInsertLocation();
+      const updatedScores = highScoresObj.getUpdatedScores(insertLocation);
       if (updatedScores !== null)
         setHighScores(updatedScores);
       setMessage(updatedScores === null ? MESSAGES.CORRECT_GUESS 
           : MESSAGES.NEW_HIGH_SCORE);
     }
+  };
+
+  const analyzeGuess = () => {
+    if (guess === '') return;
+
+    const [ digitCount, locationCount ] = new GuessAnalysis(guess, number).countMatches();
+    const feedback = MessageHelpers.createFeedbackMessage(digitCount, locationCount);
+    setHistory(oldHistory => [ { guess, feedback }, ...oldHistory ]);
+
+    if (remainingGuesses === 0) // player loses
+      endGame(true);
+    else if (guess === number) // player wins
+      endGame(false);
+    else
+      setMessage('');
   };
 
   return {
@@ -73,6 +89,8 @@ const useApp = () => {
     gameOver,
     numberLength,
     totalGuesses,
+    highScores,
+    setGuess,
     setMessage,
     setGameOver,
     setRemainingGuesses,
