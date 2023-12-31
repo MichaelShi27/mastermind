@@ -5,11 +5,11 @@ class SpeechRecognition {
   #UNRECOGNIZED_MESSAGE = "I didn't recognize that command.";
   #ERROR_MESSAGE = 'Error occurred in speech recognition. Please try again!';
   #keyDownEvent;
-  #appVariables;
+  #appObj;
 
-  constructor(keyDownEvent, appVariables) {
+  constructor(keyDownEvent, appObj) {
     this.#keyDownEvent = keyDownEvent;
-    this.#appVariables = appVariables;
+    this.#appObj = appObj;
   }
 
   listenForSpeech = () => {
@@ -29,7 +29,7 @@ class SpeechRecognition {
     recognition.start();
     recognition.onresult = e => this.#handleSpeech(e, recognition);
 
-    const { setMessage } = this.#appVariables;
+    const { setMessage } = this.#appObj;
     recognition.onnomatch = () => setMessage(this.#UNRECOGNIZED_MESSAGE);
     recognition.onerror = () => setMessage(this.#ERROR_MESSAGE);
   };
@@ -37,7 +37,7 @@ class SpeechRecognition {
   #handleSpeech = (speechEvent, recognition) => {
     recognition.stop();
     const speech = speechEvent.results[0][0].transcript;
-    handleGuessSubmit(this.#keyDownEvent, this.#appVariables, speech);
+    handleGuessSubmit(this.#keyDownEvent, this.#appObj, speech);
   };
 }
 

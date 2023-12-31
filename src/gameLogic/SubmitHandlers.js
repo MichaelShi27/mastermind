@@ -37,9 +37,9 @@ class SubmitHandlers {
   handleNumberLengthSubmit = (e, startNewGame, totalGuesses) => this.#handleOptionsSubmit(
       e, startNewGame, totalGuesses, this.#NUM_LENGTH, InputValidators.validateNumberLength);
 
-  handleTextGuessSubmit = (e, appVariables) => {
+  handleTextGuessSubmit = (e, appObj) => {
     e.preventDefault();
-    this.handleGuessSubmit(e.target.guess, appVariables, e.target.guess.value);
+    this.handleGuessSubmit(e.target.guess, appObj, e.target.guess.value);
   };
 
   handleGuessSubmit = (inputField, { remainingGuesses, setMessage, setGuess,

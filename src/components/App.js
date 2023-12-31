@@ -8,27 +8,27 @@ import HighScores from './HighScores.js';
 import { Message, GuessContainer, OptionsContainer, OptionsButton } from './styles.js';
 
 const App = () => {
-  const appVariables = useApp();
-  const { message, remainingGuesses, numberLength } = appVariables;
+  const appObj = useApp();
+  const { message, remainingGuesses, numberLength } = appObj;
 
   return (<>
     <GuessContainer>
       <div>To make a guess, type a {numberLength}-digit number or press SHIFT</div>
       <div> and speak the number into your mic:</div>
       <Message>{message}</Message>
-      <GuessInput {...appVariables} />
-      <PlayAgainButton {...appVariables} />
+      <GuessInput {...appObj} />
+      <PlayAgainButton {...appObj} />
       <div>Remaining guesses: {remainingGuesses}</div>
-      <GuessHistory {...appVariables} />
+      <GuessHistory {...appObj} />
     </GuessContainer>
     <OptionsContainer>
       Game Options:
       <OptionsButton>Show Hint</OptionsButton>
-      <NumberLengthInput {...appVariables} />
-      <TotalGuessesInput {...appVariables} />
+      <NumberLengthInput {...appObj} />
+      <TotalGuessesInput {...appObj} />
       <OptionsButton>Add Timer</OptionsButton>
     </OptionsContainer>
-    <HighScores {...appVariables} />
+    <HighScores {...appObj} />
   </>);
 };
 
