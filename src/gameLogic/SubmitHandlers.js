@@ -1,7 +1,6 @@
 import InputValidators from './helpers/InputValidators.js';
-import { MESSAGES } from '../constants.js';
 import MessageHelpers from './helpers/MessageHelpers.js';
-import AnalyzeGuess from './AnalyzeGuess.js';
+import GuessAnalysis from './GuessAnalysis.js';
 
 /* 
   this class handles the submit functionality of the various input fields of the app, 
@@ -43,18 +42,17 @@ class SubmitHandlers {
     this.handleGuessSubmit(e.target.guess, appVariables, e.target.guess.value);
   };
 
-  handleGuessSubmit = (inputField, { remainingGuesses, setMessage, setGameOver,
+  handleGuessSubmit = (inputField, { remainingGuesses, setMessage, endGame,
       setRemainingGuesses, number, numberLength, setHistory }, guess) => {
     if (InputValidators.validateGuess(guess, numberLength) === false) {
       setMessage(MessageHelpers.createInvalidGuessMessage(numberLength));
       return;
     }
 
-    if (guess === number) { // player wins
-      setMessage(MESSAGES.CORRECT_GUESS);
-      setGameOver(true);
-    } else {
-      const [ digitCount, locationCount ] = AnalyzeGuess.getMatchCounts(guess, number);
+    if (guess === number) // player wins
+      endGame(false);
+    else {
+      const [ digitCount, locationCount ] = new GuessAnalysis(guess, number).countMatches();
       const feedback = MessageHelpers.createFeedbackMessage(digitCount, locationCount);
       setHistory(oldHistory => [ { guess, feedback }, ...oldHistory ]);
       setRemainingGuesses(remainingGuesses - 1);

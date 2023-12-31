@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import AppHelpers from "./helpers/AppHelpers.js";
 import { MESSAGES } from "../constants.js";
+import HighScores from "./HighScores.js";
+import { DoublyLinkedList } from "./DoublyLinkedList.js";
 
 /*
   this is a custom React hook to handle the logic for App.js,
@@ -14,16 +16,15 @@ const useApp = () => {
   const [ gameOver, setGameOver ] = useState(false);
   const [ numberLength, setNumberLength ] = useState(4);
   const [ totalGuesses, setTotalGuesses ] = useState(10);
+  const [ highScores, setHighScores ] = useState(new DoublyLinkedList());
 
   useEffect(() => startNewGame(numberLength, totalGuesses), []);
 
   useEffect(() => setNumberLength(number.length), [ number ]);
 
   useEffect(() => {
-    if (remainingGuesses === 0) { // player loses
-      setMessage(MESSAGES.LOSS);
-      setGameOver(true);
-    }
+    if (remainingGuesses === 0) // player loses
+      endGame(true);
   }, [ remainingGuesses ]);
 
   const startNewGame = (numLength, guessesCount) => {
@@ -48,6 +49,22 @@ const useApp = () => {
     setGameOver(false);
   };
 
+  const endGame = isLoss => {
+    setGameOver(true);
+    if (isLoss === true)
+      setMessage(MESSAGES.LOSS);
+    else {
+      const highScoresObj = new HighScores(highScores, 
+          totalGuesses - remainingGuesses, numberLength);
+      const insertionLocation = highScoresObj.getInsertLocation();
+      const updatedScores = highScoresObj.getUpdatedScores(insertionLocation);
+      if (updatedScores !== null)
+        setHighScores(updatedScores);
+      setMessage(updatedScores === null ? MESSAGES.CORRECT_GUESS 
+          : MESSAGES.NEW_HIGH_SCORE);
+    }
+  };
+
   return {
     number,
     remainingGuesses,
@@ -60,7 +77,8 @@ const useApp = () => {
     setGameOver,
     setRemainingGuesses,
     setHistory,
-    startNewGame
+    startNewGame,
+    endGame
   };
 };
 

@@ -7,38 +7,37 @@ class HighScores {
     this.numLength = numLength;
   }
 
-  checkHighScores = () => {
-    const { highScores: { length } } = this;
-    if (length === 0) return 0;
+  /*
+    this function loops backwards through the highScores linked list,
+    compares the new score to previous scores, & returns the node that 
+    the new node will be inserted after. if the new score will be the 
+    new head of the linked list, it returns null
+  */
+  getInsertLocation = () => {
+    let currentNode = this.highScores.tail;
+    let insertLocation = null;
 
-    let idxToReplace = null;
-    for (let i = length - 1; i >= 0; i--) {
-      const { numLength, guessesUsed } = this.highScores[i];
+    while (currentNode !== null) {
+      insertLocation = currentNode;
+
+      const { data: { numLength, guessesUsed } } = currentNode;
       if (this.numLength < numLength) break;
       if (this.numLength === numLength 
           && this.guessesUsed >= guessesUsed) break;
-      idxToReplace = i;
+
+      if (insertLocation === this.highScores.head) 
+        return null;
+      currentNode = currentNode.prev;
     }
-    if (idxToReplace === null)
-      // if highScores hasn't reached max length, we'll insert the
-      // current high score no matter what by returning 'length'
-      return length < this.#MAX_SCORES_COUNT ? length : -1;
-    return idxToReplace;
+    return insertLocation;
   };
 
-  updateHighScores = newScoreIdx => {
-    const scoresCopy = this.highScores.slice();
-    const loopCount = scoresCopy.length 
-        + (scoresCopy.length < this.#MAX_SCORES_COUNT ? 1 : 0);
-    let temp = scoresCopy[newScoreIdx];
-    scoresCopy[newScoreIdx] = { 
-        guessesUsed: this.guessesUsed, numLength: this.numLength };
-
-    for (let i = newScoreIdx + 1; i < loopCount; i++) {
-      temp = scoresCopy[i];
-      scoresCopy[i] = scoresCopy[i - 1];
-    }
-    return scoresCopy;
+  getUpdatedScores = insertLocation => {
+    if (insertLocation === this.highScores.tail 
+        && this.highScores.length === this.#MAX_SCORES_COUNT)
+      return null;
+    this.highScores.insertAfterNode(insertLocation);
+    return this.highScores;
   };
 }
 
