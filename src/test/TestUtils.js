@@ -1,3 +1,5 @@
+import { DoublyLinkedList, DLLNode } from '../gameLogic/DoublyLinkedList.js';
+
 class TestUtils {
   // returns an object to be used in testing
   static createTestObj = (funcName, func, testCases) => ({ funcName, func, testCases });
@@ -21,14 +23,13 @@ class TestUtils {
   };
 
   static compareObjectEquality = (obj1, obj2) => {
-    let propertyCount = 0;
-    for (const key in obj1) {
+    if (Object.keys(obj1).length !== Object.keys(obj2).length) return false;
+
+    for (const key in obj1)
       if (obj2.hasOwnProperty(key) === false
           || this.compareEquality(obj1[key], obj2[key]) === false)
         return false;
-      propertyCount++;
-    }
-    return propertyCount === Object.keys(obj2).length;
+    return true;
   };
 
   static compareEquality = (a, b) => {
@@ -46,6 +47,13 @@ class TestUtils {
     if (typeof a === 'object')
       return this.compareObjectEquality(a, b);
     return a === b;
+  };
+
+  static convertArrayToDLL = arr => {
+    const list = new DoublyLinkedList();
+    for (const el of arr)
+      list.insertAtEnd(el);
+    return list;
   };
 }
 
