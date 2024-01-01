@@ -19,17 +19,26 @@ class HighScores {
 
     while (currentNode !== null) {
       const { data: { numLength, guessesUsed } } = currentNode;
-      if (this.numLength < numLength) break;
-      if (this.numLength === numLength 
-          && this.guessesUsed >= guessesUsed) break;
-  
+      if (this.#beatsScore(numLength, guessesUsed) === false) break;
       insertLocation = currentNode;
       currentNode = currentNode.next;
     }
     return insertLocation;
   };
 
+  /*
+    this function computes if one score beats another. a score is
+    better if it has higher numLength, or if numLength is tied then
+    if it has lower guessesUsed
+  */
+  #beatsScore = (numLength, guessesUsed) => (
+    this.numLength > numLength || (this.numLength === numLength 
+        && this.guessesUsed < guessesUsed)
+  );
+
   getUpdatedScores = insertLocation => {
+    // if the node would be the new head but the list is max length,
+    // then we shouldn't insert the node at all
     if (insertLocation === null 
         && this.highScores.length === MAX_HIGH_SCORES_COUNT)
       return null;
