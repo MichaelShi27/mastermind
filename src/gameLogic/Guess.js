@@ -1,4 +1,4 @@
-class GuessAnalysis {
+class Guess {
   #guess;
   #num;
 
@@ -7,6 +7,10 @@ class GuessAnalysis {
     this.#num = num;
   }
   
+  /*
+    this function analyzes a user's guess & determines how many  
+    numbers & locations the user got correct
+  */
   countMatches = () => {
     const digitCount = this.#countDigitMatches();
     if (digitCount === 0) return [ 0, 0 ];
@@ -50,6 +54,7 @@ class GuessAnalysis {
     const seen = {};
   
     for (const [ idx, digit ] of this.#num.split('').entries())
+      // store an obj that tracks indices as well as count
       seen[digit] = { 
         ...(seen[digit] || {}),
         count: 1 + (seen[digit]?.count || 0), 
@@ -69,4 +74,4 @@ class GuessAnalysis {
   };
 }
 
-export default GuessAnalysis;
+export default Guess;

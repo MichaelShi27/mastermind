@@ -1,6 +1,5 @@
 import InputValidators from './helpers/InputValidators.js';
 import MessageHelpers from './helpers/MessageHelpers.js';
-import GuessAnalysis from './GuessAnalysis.js';
 
 /* 
   this class handles the submit functionality of the various input fields of the app, 

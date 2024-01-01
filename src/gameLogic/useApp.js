@@ -3,7 +3,7 @@ import AppHelpers from "./helpers/AppHelpers.js";
 import { MESSAGES } from "../constants.js";
 import HighScores from "./HighScores.js";
 import { LinkedList } from "./LinkedList.js";
-import GuessAnalysis from './GuessAnalysis.js';
+import Guess from './Guess.js';
 import MessageHelpers from './helpers/MessageHelpers.js';
 
 /*
@@ -69,7 +69,7 @@ const useApp = () => {
   const analyzeGuess = () => {
     if (guess === '') return;
 
-    const [ digitCount, locationCount ] = new GuessAnalysis(guess, number).countMatches();
+    const [ digitCount, locationCount ] = new Guess(guess, number).countMatches();
     const feedback = MessageHelpers.createFeedbackMessage(digitCount, locationCount);
     setHistory(oldHistory => [ { guess, feedback }, ...oldHistory ]);
 

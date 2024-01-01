@@ -1,5 +1,5 @@
 import TestUtils from "../TestUtils.js";
-import GuessAnalysis from '../../gameLogic/GuessAnalysis.js';
+import Guess from '../../gameLogic/Guess.js';
 
 const testCases = [
   { idx: 1, arguments: [ '0135', '2246' ], expectedResult: [ 0, 0 ] },
@@ -24,7 +24,7 @@ const testCases = [
 ];
 
 const testCountMatches = (guess, num) => {
-  const guessObj = new GuessAnalysis(guess, num);
+  const guessObj = new Guess(guess, num);
   return guessObj.countMatches();
 };
 

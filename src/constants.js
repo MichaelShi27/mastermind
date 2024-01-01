@@ -5,11 +5,14 @@ export const MESSAGES = {
   ALL_INCORRECT: 'All incorrect!'
 };
 
+// min/max values of the possible digits in the number to guess
 export const DIGITS = {
   MIN_VAL: 0,
   MAX_VAL: 9
 };
 
+// min/max values for the length of the number to guess
+// & the total guesses that the user is allowed
 export const OPTIONS = {
   MIN_NUM_LENGTH: 4,
   MAX_NUM_LENGTH: 8,
@@ -17,4 +20,5 @@ export const OPTIONS = {
   MAX_TOTAL_GUESSES: 15
 };
 
+// max number of recorded high scores
 export const MAX_HIGH_SCORES_COUNT = 10;
