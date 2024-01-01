@@ -49,7 +49,7 @@ class TestUtils {
     return a === b;
   };
 
-  static convertArrayToDLL = arr => {
+  static convertArrayToLL = arr => {
     const list = new LinkedList();
     for (const el of arr)
       list.insertAtEnd(el);

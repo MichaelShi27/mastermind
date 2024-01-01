@@ -44,8 +44,8 @@ const testCases = [
   }
 ];
 
-const testConvertArrayToDLL = arr => {
-  const { head, length } = TestUtils.convertArrayToDLL(arr);
+const testConvertArrayToLL = arr => {
+  const { head, length } = TestUtils.convertArrayToLL(arr);
 
   let currentNode = head;
   let idx = 0;
@@ -58,5 +58,5 @@ const testConvertArrayToDLL = arr => {
   return idx === length && arr.length === length;
 };
 
-export const convertArrayToDLLObj = TestUtils.createTestObj(
-    'convertArrayToDLL', testConvertArrayToDLL, testCases);
+export const convertArrayToLLObj = TestUtils.createTestObj(
+    'convertArrayToLL', testConvertArrayToLL, testCases);

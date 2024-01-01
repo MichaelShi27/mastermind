@@ -34,42 +34,44 @@ const testCases = [
     expectedResult: null,
   }, {
     idx: 2,
-    arguments: [ scoresListWithOne, 4, 6 ], // insert before sole node
-    expectedResult: null
-  }, {
-    idx: 3,
-    arguments: [ scoresListWithOne, 6, 6 ], // insert after sole node
+    arguments: [ scoresListWithOne, 4, 6 ], // insert behind sole node
     expectedResult: { guessesUsed: 5, numLength: 6 }
   }, {
+    idx: 3,
+    arguments: [ scoresListWithOne, 6, 6 ], // insert before sole node
+    expectedResult: null
+  }, {
     idx: 4,
-    arguments: [ incompleteScoresList, 1, 8 ], // insert as first
-    expectedResult: null,
+    arguments: [ incompleteScoresList, 1, 8 ], // insert as tail
+    expectedResult: { guessesUsed: 2, numLength: 8 },
   }, {
     idx: 5,
-    arguments: [ incompleteScoresList, 15, 4 ], // insert as last
-    expectedResult: { guessesUsed: 10, numLength: 4 }
+    arguments: [ incompleteScoresList, 15, 4 ], // insert as head
+    expectedResult: null
   }, {
     idx: 6,
-    arguments: [ incompleteScoresList, 10, 4 ], // insert as last as tie
-    expectedResult: { guessesUsed: 10, numLength: 4 }
+    arguments: [ incompleteScoresList, 10, 4 ], // insert as head as tie
+    expectedResult: null
   }, {
     idx: 7,
     arguments: [ completeScoresList, 8, 6 ], // insert in middle
-    expectedResult: { guessesUsed: 6, numLength: 6 }
+    expectedResult: { guessesUsed: 9, numLength: 6 }
   }, {
     idx: 8,
-    arguments: [ completeScoresList, 10, 4 ], // insert as last
-    expectedResult: { guessesUsed: 9, numLength: 4 }
+    arguments: [ completeScoresList, 10, 4 ], // insert as head
+    expectedResult: null
   }, {
     idx: 9,
-    arguments: [ completeScoresList, 9, 4 ], // insert as last as tie
-    expectedResult: { guessesUsed: 9, numLength: 4 }
+    arguments: [ completeScoresList, 9, 4 ], // insert as head as tie
+    expectedResult: null
   }
 ];
 
 const testGetInsertLocation = (highScores, guessesUsed, numLength) => {
-  const highScoresObj = new HighScores(TestUtils.convertArrayToDLL(highScores), 
-      guessesUsed, numLength);
+  // we reverse the test highScores bc my previous implementation used a doubly
+  // linked list where I could traverse backwards and the test cases are left over
+  const highScoresObj = new HighScores(
+      TestUtils.convertArrayToLL(highScores.reverse()), guessesUsed, numLength);
   const resultNode = highScoresObj.getInsertLocation();
   return resultNode === null ? resultNode : resultNode.data;
 };
