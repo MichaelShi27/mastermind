@@ -9,6 +9,30 @@ class SubmitHandlers {
   static #TOTAL_GUESSES = 'totalGuesses';
 
   /*
+    this function handles a text guess (i.e. not voice input)
+    - e is the DOM event, i.e. the form submit event
+  */
+  static handleTextGuessSubmit = (e, appObj) => {
+    e.preventDefault();
+    this.handleGuessSubmit(e.target.guess, appObj, e.target.guess.value);
+  };
+
+  static handleGuessSubmit = (inputField, { remainingGuesses, setMessage, setGuess,
+      setRemainingGuesses, numberLength }, guess) => {
+    if (InputValidators.validateGuess(guess, numberLength) === false)
+      return setMessage(MessageHelpers.createInvalidGuessMessage(numberLength));
+    setRemainingGuesses(remainingGuesses - 1);
+    setGuess(guess);
+    inputField.value = '';
+  };
+
+  static handleTotalGuessesSubmit = (e, startNewGame, options) => this.#handleOptionsSubmit(
+    e, startNewGame, options, this.#TOTAL_GUESSES, InputValidators.validateTotalGuesses);
+
+  static handleNumberLengthSubmit = (e, startNewGame, options) => this.#handleOptionsSubmit(
+      e, startNewGame, options, this.#NUMBER_LENGTH, InputValidators.validateNumberLength);
+
+  /*
     generic function for handling input submits
     - e is the DOM Event, i.e. the form's submit event
     - optionToChange is whichever option the user is trying to change with their input, 
@@ -25,28 +49,6 @@ class SubmitHandlers {
     e.target[optionToChange].value = '';
     e.target[optionToChange].placeholder = userInput;
   }
-
-  static handleTotalGuessesSubmit = (e, startNewGame, options) => this.#handleOptionsSubmit(
-      e, startNewGame, options, this.#TOTAL_GUESSES, InputValidators.validateTotalGuesses);
-
-  static handleNumberLengthSubmit = (e, startNewGame, options) => this.#handleOptionsSubmit(
-      e, startNewGame, options, this.#NUMBER_LENGTH, InputValidators.validateNumberLength);
-
-  static handleTextGuessSubmit = (e, appObj) => {
-    e.preventDefault();
-    this.handleGuessSubmit(e.target.guess, appObj, e.target.guess.value);
-  };
-
-  static handleGuessSubmit = (inputField, { remainingGuesses, setMessage, setGuess,
-      setRemainingGuesses, numberLength }, guess) => {
-    if (InputValidators.validateGuess(guess, numberLength) === false) {
-      setMessage(MessageHelpers.createInvalidGuessMessage(numberLength));
-      return;
-    }
-    setRemainingGuesses(remainingGuesses - 1);
-    setGuess(guess);
-    inputField.value = '';
-  };
 }
 
 export default SubmitHandlers;
