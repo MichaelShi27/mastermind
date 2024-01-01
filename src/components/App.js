@@ -23,10 +23,8 @@ const App = () => {
     </GuessContainer>
     <OptionsContainer>
       Game Options:
-      <OptionsButton>Show Hint</OptionsButton>
       <NumberLengthInput {...appObj} />
       <TotalGuessesInput {...appObj} />
-      <OptionsButton>Add Timer</OptionsButton>
     </OptionsContainer>
     <HighScores {...appObj} />
   </>);

@@ -62,6 +62,7 @@ export const ListEntry = styled.div`
 
 // NumberLengthInput.js & TotalGuessesInput.js
 export const OptionsForm = styled.form`
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
 `;
