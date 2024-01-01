@@ -7,11 +7,11 @@ export class LinkedList {
     this.length = length;
   }
 
+  // inserts a new node after the insertLocation node
   insertAfterNode(data, insertLocation) {
     const node = new LLNode(data, null);
-    if (insertLocation === null) {
-      if (this.head !== null)
-        node.next = this.head;
+    if (insertLocation === null) { // insert new head
+      node.next = this.head;
       this.head = node;
     } else {
       node.next = insertLocation.next;
@@ -20,14 +20,19 @@ export class LinkedList {
     if (insertLocation === this.tail)
       this.tail = node;
 
-    if (this.length === MAX_HIGH_SCORES_COUNT) {
-      const temp = this.head;
-      this.head = this.head.next;
-      temp.next = null;
-    } else
+    if (this.length === MAX_HIGH_SCORES_COUNT)
+      this.#cutOffHead();
+    else
       this.length++;
   }
 
+  #cutOffHead() {
+    const temp = this.head;
+    this.head = this.head.next;
+    temp.next = null;
+  }
+
+  // currently only used in tests
   insertAtEnd(data) {
     const node = new LLNode(data, null);
     if (this.length === 0)
@@ -38,6 +43,7 @@ export class LinkedList {
     this.length++;
   }
 
+  // returns the LL in array form for React render
   convertToArray = () => {
     const arr = [];
     let currentNode = this.head;
