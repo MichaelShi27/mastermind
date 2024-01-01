@@ -8,10 +8,6 @@ export const Message = styled.div`
   color: blue;
 `;
 
-export const NewGameButton = styled.button`
-  margin: 0 0 20px;
-`;
-
 export const OptionsButton = styled.button`
   margin: 20px 0;
   width: 100px;
@@ -33,9 +29,9 @@ export const OptionsContainer = styled.div`
   vertical-align: top;
 `;
 
-export const OptionsInput = styled.input`
-  width: 130px;
-  margin-bottom: 10px;
+// PlayAgainButton.js
+export const NewGameButton = styled.button`
+  margin: 0 0 20px;
 `;
 
 // HighScores.js
@@ -64,8 +60,13 @@ export const ListEntry = styled.div`
   border-radius: 4px;
 `;
 
-// DigitsInput.js & TotalGuessesInput.js
+// NumberLengthInput.js & TotalGuessesInput.js
 export const OptionsForm = styled.form`
   display: flex;
   flex-direction: column;
+`;
+
+export const OptionsInput = styled.input`
+  width: 130px;
+  margin-bottom: 10px;
 `;

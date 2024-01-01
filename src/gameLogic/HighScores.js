@@ -10,8 +10,8 @@ class HighScores {
   /*
     this function loops through the highScores linked list,
     compares the new score to previous scores, & returns the node that 
-    the new node will be inserted after. if the new score will be the 
-    new head of the linked list, it returns null
+    the new node will be inserted behind, i.e. the highest score it beats. 
+    if the new score will be the new head of the linked list, it returns null
   */
   getInsertLocation = () => {
     let currentNode = this.highScores.head;
