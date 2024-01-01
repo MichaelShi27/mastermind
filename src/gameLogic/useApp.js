@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import AppHelpers from "./helpers/AppHelpers.js";
 import { MESSAGES } from "../constants.js";
 import HighScores from "./HighScores.js";
-import { DoublyLinkedList } from "./DoublyLinkedList.js";
+import { LinkedList } from "./LinkedList.js";
 import GuessAnalysis from './GuessAnalysis.js';
 import MessageHelpers from './helpers/MessageHelpers.js';
 
@@ -19,7 +19,7 @@ const useApp = () => {
   const [ gameOver, setGameOver ] = useState(false);
   const [ numberLength, setNumberLength ] = useState(4);
   const [ totalGuesses, setTotalGuesses ] = useState(10);
-  const [ highScores, setHighScores ] = useState(new DoublyLinkedList());
+  const [ highScores, setHighScores ] = useState(new LinkedList());
 
   useEffect(() => startNewGame(numberLength, totalGuesses), []);
 

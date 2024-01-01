@@ -45,7 +45,7 @@ const testCases = [
 ];
 
 const testConvertArrayToDLL = arr => {
-  const { head, tail, length } = TestUtils.convertArrayToDLL(arr);
+  const { head, length } = TestUtils.convertArrayToDLL(arr);
 
   let currentNode = head;
   let idx = 0;
@@ -55,15 +55,7 @@ const testConvertArrayToDLL = arr => {
     currentNode = currentNode.next;
     idx++;
   }
-
-  currentNode = tail;
-  while (currentNode !== null) {
-    if (TestUtils.compareEquality(currentNode.data, arr[idx - 1]) === false)
-      return false;
-    currentNode = currentNode.prev;
-    idx--;
-  }
-  return idx === 0 && arr.length === length;
+  return idx === length && arr.length === length;
 };
 
 export const convertArrayToDLLObj = TestUtils.createTestObj(

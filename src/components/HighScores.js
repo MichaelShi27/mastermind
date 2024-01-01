@@ -1,7 +1,7 @@
 import { HighScoresContainer, ListEntry } from './styles.js';
 
 const HighScores = ({ highScores }) => {
-  const scoresArray = highScores.convertToArray();
+  const scoresArray = highScores.convertToArray().reverse();
   return (
     <HighScoresContainer>
       <div>High Scores:</div>

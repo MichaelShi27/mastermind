@@ -1,4 +1,4 @@
-export class DoublyLinkedList {
+export class LinkedList {
   constructor(head = null, tail = null, length = 0) {
     this.head = head;
     this.tail = tail;
@@ -6,18 +6,15 @@ export class DoublyLinkedList {
   }
 
   insertAfterNode(data, insertLocation) {
-    const node = new DLLNode(data, insertLocation, null);
+    const node = new LLNode(data, null);
     if (insertLocation === null) {
-      if (this.head !== null) {
+      if (this.head !== null)
         node.next = this.head;
-        this.head.prev = node;
-      }
       this.head = node;
     } else {
-      node.next = node.prev.next;
-      node.prev.next = node;
+      node.next = insertLocation.next;
+      insertLocation.next = node;
     }
-    node.next && (node.next.prev = node);
 
     this.length++;
     if (insertLocation === this.tail)
@@ -25,7 +22,7 @@ export class DoublyLinkedList {
   }
 
   insertAtEnd(data) {
-    const node = new DLLNode(data, this.tail, null);
+    const node = new LLNode(data, null);
     if (this.length === 0)
       this.head = node; 
     else
@@ -45,10 +42,9 @@ export class DoublyLinkedList {
   };
 }
 
-export class DLLNode {
-  constructor(data, prev, next) {
+class LLNode {
+  constructor(data, next) {
     this.data = data;
-    this.prev = prev;
     this.next = next;
   }
 } 

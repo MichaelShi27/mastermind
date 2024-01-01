@@ -1,4 +1,4 @@
-import { DoublyLinkedList, DLLNode } from '../gameLogic/DoublyLinkedList.js';
+import { LinkedList } from '../gameLogic/LinkedList.js';
 
 class TestUtils {
   // returns an object to be used in testing
@@ -50,7 +50,7 @@ class TestUtils {
   };
 
   static convertArrayToDLL = arr => {
-    const list = new DoublyLinkedList();
+    const list = new LinkedList();
     for (const el of arr)
       list.insertAtEnd(el);
     return list;
