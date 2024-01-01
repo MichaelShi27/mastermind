@@ -1,70 +1,25 @@
-# Getting Started with Create React App
+## How To Run The App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. clone the repo and navigate to its root directory in the terminal
+2. run `npm install`
+3. run `npm run nodemon` to start the Express server
+4. in a new terminal, run `npm start` to start the react-scripts server
+5. http://localhost:3000/ should open automatically in your browser and display the app
 
-## Available Scripts
+## How To Play
 
-In the project directory, you can run:
+Type or speak a number to make your guess! The 2 input boxes on the right control the length of the number you wish to guess & the number of guesses you have to guess the number.
 
-### `npm start`
+## Code Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This app is built with the MERN stack (MongoDB, Express, React, Node). I tried to separate my concerns by keeping the React components in their own folder in `src/components`, then storing the game and component logic in `src/gameLogic`. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I chose to use JavaScript because I felt the most comfortable building a full-stack app/game with it, since I've done so in the past. Although the vast majority of my coding at LinkedIn has been in Java, I didn't want my efficiency to be hindered by minor issues like syntax or setup, and I knew that my coding and back-end skills could still be demonstrated through JS.
 
-### `npm test`
+My React components are written as functions with React Hooks, since function-based components and Hooks are the newer, preferred approach to React (instead of class-based components). Although I'm mostly used to functional programming when coding in JS, I strove to think in terms of OOP; I wrote almost all of the actual game logic in `src/gameLogic` as classes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Extensions
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- difficulty options (where users can alter both the length of the number to guess and the number of guesses they are allowed), 
+- voice functionality for making guesses
+- list of high scores

@@ -11,7 +11,7 @@ class SubmitHandlers {
   /*
     this function handles a text guess (i.e. not voice input)
       - e is the DOM event, i.e. the form submit event
-      - appObj is the object returned from the useApp custom hook
+      - appObj is the object returned from the useApp custom Hook
   */
   static handleTextGuessSubmit = (e, appObj) => {
     e.preventDefault();

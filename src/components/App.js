@@ -8,7 +8,7 @@ import HighScores from './HighScores.js';
 import { Message, GuessContainer, OptionsContainer } from './styles.js';
 
 const App = () => {
-  const appObj = useApp(); // custom React hook to hold main app logic
+  const appObj = useApp(); // custom React Hook to hold main app logic
   const { message, remainingGuesses, numberLength } = appObj;
 
   return (<>

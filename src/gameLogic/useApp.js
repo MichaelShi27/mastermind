@@ -7,7 +7,7 @@ import Guess from './Guess.js';
 import MessageHelpers from './helpers/MessageHelpers.js';
 
 /*
-  this is a custom React hook to handle the logic for App.js,
+  this is a custom React Hook to handle the logic for App.js,
   i.e. the main/overarching logic of the app
 */
 const useApp = () => {
