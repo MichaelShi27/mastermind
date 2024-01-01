@@ -1,10 +1,14 @@
 import { MAX_HIGH_SCORES_COUNT } from '../constants.js';
 
 class HighScores {
+  #highScores;
+  #guessesUsed;
+  #numLength;
+
   constructor(highScores, guessesUsed, numLength) {
-    this.highScores = highScores;
-    this.guessesUsed = guessesUsed;
-    this.numLength = numLength;
+    this.#highScores = highScores;
+    this.#guessesUsed = guessesUsed;
+    this.#numLength = numLength;
   }
 
   /*
@@ -14,7 +18,7 @@ class HighScores {
     if the new score will be the new head of the linked list, it returns null
   */
   getInsertLocation = () => {
-    let currentNode = this.highScores.head;
+    let currentNode = this.#highScores.head;
     let insertLocation = null;
 
     while (currentNode !== null) {
@@ -32,22 +36,22 @@ class HighScores {
     if it has lower guessesUsed
   */
   #beatsScore = (numLength, guessesUsed) => (
-    this.numLength > numLength || (this.numLength === numLength 
-        && this.guessesUsed < guessesUsed)
+    this.#numLength > numLength || (this.#numLength === numLength 
+        && this.#guessesUsed < guessesUsed)
   );
 
   getUpdatedScores = insertLocation => {
     // if the node would be the new head but the list is max length,
     // then we shouldn't insert the node at all
     if (insertLocation === null 
-        && this.highScores.length === MAX_HIGH_SCORES_COUNT)
+        && this.#highScores.length === MAX_HIGH_SCORES_COUNT)
       return null;
 
-    this.highScores.insertAfterNode({
-      guessesUsed: this.guessesUsed,
-      numLength: this.numLength
+    this.#highScores.insertAfterNode({
+      guessesUsed: this.#guessesUsed,
+      numLength: this.#numLength
     }, insertLocation);
-    return this.highScores;
+    return this.#highScores;
   };
 }
 

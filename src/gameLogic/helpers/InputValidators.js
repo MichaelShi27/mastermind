@@ -1,5 +1,6 @@
 import { OPTIONS } from '../../constants.js';
 
+// helper functions to validate user input for the 3 input fields
 class InputValidators {
   static validateGuess = (guess, numLength) => guess.length === numLength 
       && !isNaN(Number(guess));
