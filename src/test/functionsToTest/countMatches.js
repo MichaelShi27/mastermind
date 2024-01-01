@@ -23,10 +23,7 @@ const testCases = [
   { idx: 17, arguments: [ '123456', '777776' ], expectedResult: [ 1, 0 ] } 
 ];
 
-const testCountMatches = (guess, num) => {
-  const guessObj = new Guess(guess, num);
-  return guessObj.countMatches();
-};
+const testCountMatches = (guess, num) => new Guess(guess, num).countMatches();
 
 export const countMatchesObj = TestUtils.createTestObj('countMatches', 
     testCountMatches, testCases);

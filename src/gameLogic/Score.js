@@ -1,6 +1,6 @@
 import { MAX_HIGH_SCORES_COUNT } from '../constants.js';
 
-class HighScores {
+class Score {
   #highScores;
   #guessesUsed;
   #numLength;
@@ -33,7 +33,7 @@ class HighScores {
   /*
     this function computes if one score beats another. a score is
     better if it has higher numLength, or if numLength is tied then
-    if it has lower guessesUsed
+    it's better if it has lower guessesUsed
   */
   #beatsScore = (numLength, guessesUsed) => (
     this.#numLength > numLength || (this.#numLength === numLength 
@@ -55,4 +55,4 @@ class HighScores {
   };
 }
 
-export default HighScores;
+export default Score;

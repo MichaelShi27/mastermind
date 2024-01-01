@@ -1,5 +1,5 @@
 import TestUtils from "../TestUtils.js";
-import HighScores from '../../gameLogic/HighScores.js';
+import Score from '../../gameLogic/Score.js';
 
 const emptyScoresList = [];
 const scoresListWithOne = [ { guessesUsed: 5, numLength: 6 } ];
@@ -70,9 +70,9 @@ const testCases = [
 const testGetInsertLocation = (highScores, guessesUsed, numLength) => {
   // we reverse the test highScores bc my previous implementation used a doubly
   // linked list where I could traverse backwards and the test cases are left over
-  const highScoresObj = new HighScores(
+  const scoreObj = new Score(
       TestUtils.convertArrayToLL(highScores.reverse()), guessesUsed, numLength);
-  const resultNode = highScoresObj.getInsertLocation();
+  const resultNode = scoreObj.getInsertLocation();
   return resultNode === null ? resultNode : resultNode.data;
 };
 

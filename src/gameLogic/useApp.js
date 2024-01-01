@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import AppHelpers from "./helpers/AppHelpers.js";
 import { MESSAGES } from "../constants.js";
-import HighScores from "./HighScores.js";
+import Score from "./Score.js";
 import { LinkedList } from "./LinkedList.js";
 import Guess from './Guess.js';
 import MessageHelpers from './helpers/MessageHelpers.js';
@@ -55,10 +55,10 @@ const useApp = () => {
     if (isLoss === true)
       setMessage(MESSAGES.LOSS);
     else {
-      const highScoresObj = new HighScores(highScores, 
+      const scoreObj = new Score(highScores, 
           totalGuesses - remainingGuesses, numberLength);
-      const insertLocation = highScoresObj.getInsertLocation();
-      const updatedScores = highScoresObj.getUpdatedScores(insertLocation);
+      const insertLocation = scoreObj.getInsertLocation();
+      const updatedScores = scoreObj.getUpdatedScores(insertLocation);
       if (updatedScores !== null)
         setHighScores(updatedScores);
       setMessage(updatedScores === null ? MESSAGES.CORRECT_GUESS 
