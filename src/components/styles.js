@@ -8,11 +8,6 @@ export const Message = styled.div`
   color: blue;
 `;
 
-export const OptionsButton = styled.button`
-  margin: 20px 0;
-  width: 100px;
-`;
-
 export const GuessContainer = styled.div`
   display: inline-block;
   padding: 50px;

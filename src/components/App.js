@@ -5,7 +5,7 @@ import NumberLengthInput from './NumberLengthInput.js';
 import TotalGuessesInput from './TotalGuessesInput.js';
 import PlayAgainButton from './PlayAgainButton.js';
 import HighScores from './HighScores.js';
-import { Message, GuessContainer, OptionsContainer, OptionsButton } from './styles.js';
+import { Message, GuessContainer, OptionsContainer } from './styles.js';
 
 const App = () => {
   const appObj = useApp(); // custom React hook to hold main app logic
