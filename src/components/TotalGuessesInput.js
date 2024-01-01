@@ -3,8 +3,8 @@ import { OptionsForm, OptionsInput } from "./styles.js";
 import { OPTIONS } from '../constants.js';
 
 const TotalGuessesInput = ({ totalGuesses, startNewGame, numberLength }) => {
-  const { handleTotalGuessesSubmit } = new SubmitHandlers();
-  const onTotalGuessesSubmit = e => handleTotalGuessesSubmit(e, startNewGame, numberLength);
+  const onTotalGuessesSubmit = e => SubmitHandlers.handleTotalGuessesSubmit(e, 
+      startNewGame, { numberLength, totalGuesses });
 
   return (
     <OptionsForm onSubmit={onTotalGuessesSubmit}>

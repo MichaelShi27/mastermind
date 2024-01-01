@@ -3,8 +3,8 @@ import { OptionsForm, OptionsInput } from "./styles.js";
 import { OPTIONS } from '../constants.js';
 
 const NumberLengthInput = ({ numberLength, startNewGame, totalGuesses }) => {
-  const { handleNumberLengthSubmit } = new SubmitHandlers();
-  const onNumberLengthSubmit = e => handleNumberLengthSubmit(e, startNewGame, totalGuesses);
+  const onNumberLengthSubmit = e => SubmitHandlers.handleNumberLengthSubmit(e, 
+      startNewGame, { totalGuesses, numberLength });
 
   return (
     <OptionsForm onSubmit={onNumberLengthSubmit}>
@@ -12,7 +12,7 @@ const NumberLengthInput = ({ numberLength, startNewGame, totalGuesses }) => {
         Enter desired number <br />
         of digits to guess ({OPTIONS.MIN_NUM_LENGTH} - {OPTIONS.MAX_NUM_LENGTH}):
       </label>
-      <OptionsInput name="numLength" placeholder={numberLength} />
+      <OptionsInput name="numberLength" placeholder={numberLength} />
     </OptionsForm>
   );
 };

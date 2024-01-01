@@ -2,46 +2,42 @@ import InputValidators from './helpers/InputValidators.js';
 import MessageHelpers from './helpers/MessageHelpers.js';
 
 /* 
-  this class handles the submit functionality of the various input fields of the app, 
-  e.g. for changing the # of digits or guesses
+  this class handles the submit functionality of the app's 3 input fields
 */
 class SubmitHandlers {
-  #NUM_LENGTH = 'numLength';
-  #TOTAL_GUESSES = 'totalGuesses';
+  static #NUMBER_LENGTH = 'numberLength';
+  static #TOTAL_GUESSES = 'totalGuesses';
 
   /*
     generic function for handling input submits
     - e is the DOM Event, i.e. the form's submit event
     - optionToChange is whichever option the user is trying to change with their input, 
-      while otherOption is whichever option is staying the same 
   */
-  #handleOptionsSubmit = (e, startNewGame, otherOption, optionToChange, validationFunc) => {
+  static #handleOptionsSubmit = (e, startNewGame, options, optionToChange, validationFunc) => {
     e.preventDefault();
 
     const userInput = Number(e.target[optionToChange].value);
-    if (validationFunc(userInput) === false)
-      return;
+    if (validationFunc(userInput) === false) return;
 
-    const numLength = optionToChange === 'numLength' ? userInput : otherOption;
-    const totalGuesses = optionToChange === 'totalGuesses' ? userInput : otherOption;
-
-    startNewGame(numLength, totalGuesses);
+    options[optionToChange] = userInput;
+    startNewGame(options.numberLength, options.totalGuesses);
+  
     e.target[optionToChange].value = '';
     e.target[optionToChange].placeholder = userInput;
   }
 
-  handleTotalGuessesSubmit = (e, startNewGame, numLength) => this.#handleOptionsSubmit(
-      e, startNewGame, numLength, this.#TOTAL_GUESSES, InputValidators.validateTotalGuesses);
+  static handleTotalGuessesSubmit = (e, startNewGame, options) => this.#handleOptionsSubmit(
+      e, startNewGame, options, this.#TOTAL_GUESSES, InputValidators.validateTotalGuesses);
 
-  handleNumberLengthSubmit = (e, startNewGame, totalGuesses) => this.#handleOptionsSubmit(
-      e, startNewGame, totalGuesses, this.#NUM_LENGTH, InputValidators.validateNumberLength);
+  static handleNumberLengthSubmit = (e, startNewGame, options) => this.#handleOptionsSubmit(
+      e, startNewGame, options, this.#NUMBER_LENGTH, InputValidators.validateNumberLength);
 
-  handleTextGuessSubmit = (e, appObj) => {
+  static handleTextGuessSubmit = (e, appObj) => {
     e.preventDefault();
     this.handleGuessSubmit(e.target.guess, appObj, e.target.guess.value);
   };
 
-  handleGuessSubmit = (inputField, { remainingGuesses, setMessage, setGuess,
+  static handleGuessSubmit = (inputField, { remainingGuesses, setMessage, setGuess,
       setRemainingGuesses, numberLength }, guess) => {
     if (InputValidators.validateGuess(guess, numberLength) === false) {
       setMessage(MessageHelpers.createInvalidGuessMessage(numberLength));

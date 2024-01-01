@@ -1,5 +1,4 @@
 import SubmitHandlers from "./SubmitHandlers.js";
-const { handleGuessSubmit } = new SubmitHandlers();
   
 class SpeechRecognition {
   #UNRECOGNIZED_MESSAGE = "I didn't recognize that command.";
@@ -37,7 +36,7 @@ class SpeechRecognition {
   #handleSpeech = (speechEvent, recognition) => {
     recognition.stop();
     const speech = speechEvent.results[0][0].transcript;
-    handleGuessSubmit(this.#keyDownEvent, this.#appObj, speech);
+    SubmitHandlers.handleGuessSubmit(this.#keyDownEvent, this.#appObj, speech);
   };
 }
 
