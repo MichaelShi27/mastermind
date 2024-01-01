@@ -10,7 +10,8 @@ class SubmitHandlers {
 
   /*
     this function handles a text guess (i.e. not voice input)
-    - e is the DOM event, i.e. the form submit event
+      - e is the DOM event, i.e. the form submit event
+      - appObj is the object returned from the useApp custom hook
   */
   static handleTextGuessSubmit = (e, appObj) => {
     e.preventDefault();
@@ -33,9 +34,9 @@ class SubmitHandlers {
       e, startNewGame, options, this.#NUMBER_LENGTH, InputValidators.validateNumberLength);
 
   /*
-    generic function for handling input submits
-    - e is the DOM Event, i.e. the form's submit event
-    - optionToChange is whichever option the user is trying to change with their input, 
+    this is a generic function for handling input submits
+      - e is the DOM Event, i.e. the form's submit event
+      - optionToChange is whichever option the user is trying to change with their input, 
   */
   static #handleOptionsSubmit = (e, startNewGame, options, optionToChange, validationFunc) => {
     e.preventDefault();

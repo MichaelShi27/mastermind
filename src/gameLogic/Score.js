@@ -42,7 +42,7 @@ class Score {
 
   getUpdatedScores = insertLocation => {
     // if the node would be the new head but the list is max length,
-    // then we shouldn't insert the node at all
+    // then we shouldn't insert the node at all & will return null
     if (insertLocation === null 
         && this.#highScores.length === MAX_HIGH_SCORES_COUNT)
       return null;

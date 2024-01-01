@@ -9,9 +9,9 @@ class AppHelpers {
       .catch(console.log)
   );
 
-  static createRandomNumber = numLength => {
+  static createRandomNumber = numberLength => {
     let str = '';
-    for (let i = 0; i < numLength; i++)
+    for (let i = 0; i < numberLength; i++)
       str += Math.floor(Math.random() * (DIGITS.MAX_VAL - DIGITS.MIN_VAL + 1) + DIGITS.MIN_VAL);
     return str;
   };

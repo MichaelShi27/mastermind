@@ -23,3 +23,10 @@ export const OPTIONS = {
 
 // max number of recorded high scores
 export const MAX_HIGH_SCORES_COUNT = 10;
+
+// default state values for the length of the number to guess
+// & the total guesses that the user is allowed
+export const DEFAULTS = {
+  NUMBER_LENGTH: 4,
+  TOTAL_GUESSES: 10
+};
