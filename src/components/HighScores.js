@@ -9,7 +9,10 @@ const HighScores = ({ highScores }) => {
       {scoresArray.map(({ data: { numLength, guessesUsed} }, idx) => (
         <ListEntry key={idx}>
           <span>{`#${idx + 1}: `}</span>
-          <span>{` ${numLength} digits, ${guessesUsed} guess`}</span>
+          <span>
+            {` ${numLength} digits, ${guessesUsed} guess${
+                guessesUsed === 1 ? '' : 'es'}`}
+          </span>
         </ListEntry>
       ))}
       {scoresArray.length === 0 && <ListEntry>None yet.</ListEntry>}

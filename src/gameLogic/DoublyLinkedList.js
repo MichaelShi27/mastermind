@@ -7,9 +7,13 @@ export class DoublyLinkedList {
 
   insertAfterNode(data, insertLocation) {
     const node = new DLLNode(data, insertLocation, null);
-    if (insertLocation === null)
+    if (insertLocation === null) {
+      if (this.head !== null) {
+        node.next = this.head;
+        this.head.prev = node;
+      }
       this.head = node;
-    else {
+    } else {
       node.next = node.prev.next;
       node.prev.next = node;
     }
