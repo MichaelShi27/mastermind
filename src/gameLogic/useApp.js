@@ -30,14 +30,14 @@ const useApp = () => {
   const startNewGame = (numLength, guessesCount) => {
     AppHelpers.fetchNumber(numLength)
       .then(data => {
-        if (data.name === "Error") { // all errors except 404
-          setMessage(`Sorry, looks like there's a problem: ${data.message}`);
-          setGameOver(true);
-        } else {
+        if (data.name === "Error") // all errors except 404
+          displayError(data.message);
+        else {
           // if 404 response, app will create & use its own random num
           const num = data === 404 ? AppHelpers.createRandomNumber(numLength) 
               : data.replace(/[\n]/g, ''); // otherwise, remove newline chars
-          setNumber(num);
+
+          isNaN(Number(num)) ? displayError(MESSAGES.BAD_RESPONSE) : setNumber(num);
         }
       })
       .catch(console.log);
@@ -79,6 +79,11 @@ const useApp = () => {
       endGame(false);
     else
       setMessage('');
+  };
+
+  const displayError = message => {
+    setMessage(`Sorry, looks like there's a problem: ${message}`);
+    setGameOver(true);
   };
 
   return {

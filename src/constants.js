@@ -2,7 +2,8 @@ export const MESSAGES = {
   CORRECT_GUESS: 'Correct! Great job! 🥳',
   NEW_HIGH_SCORE: 'Correct! And you got a new high score! 🔥🔥',
   LOSS: 'Game over. Better luck next time!',
-  ALL_INCORRECT: 'All incorrect!'
+  ALL_INCORRECT: 'All incorrect!',
+  BAD_RESPONSE: 'Bad response from the server :('
 };
 
 // min/max values of the possible digits in the number to guess
