@@ -16,3 +16,5 @@ export const OPTIONS = {
   MIN_TOTAL_GUESSES: 5,
   MAX_TOTAL_GUESSES: 15
 };
+
+export const MAX_HIGH_SCORES_COUNT = 10;

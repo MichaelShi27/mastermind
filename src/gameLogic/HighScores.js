@@ -1,6 +1,6 @@
-class HighScores {
-  #MAX_SCORES_COUNT = 10;
+import { MAX_HIGH_SCORES_COUNT } from '../constants.js';
 
+class HighScores {
   constructor(highScores, guessesUsed, numLength) {
     this.highScores = highScores;
     this.guessesUsed = guessesUsed;
@@ -31,7 +31,7 @@ class HighScores {
 
   getUpdatedScores = insertLocation => {
     if (insertLocation === null 
-        && this.highScores.length === this.#MAX_SCORES_COUNT)
+        && this.highScores.length === MAX_HIGH_SCORES_COUNT)
       return null;
 
     this.highScores.insertAfterNode({

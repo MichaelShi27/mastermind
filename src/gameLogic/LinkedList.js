@@ -1,3 +1,5 @@
+import { MAX_HIGH_SCORES_COUNT } from '../constants.js';
+
 export class LinkedList {
   constructor(head = null, tail = null, length = 0) {
     this.head = head;
@@ -15,10 +17,15 @@ export class LinkedList {
       node.next = insertLocation.next;
       insertLocation.next = node;
     }
-
-    this.length++;
     if (insertLocation === this.tail)
       this.tail = node;
+
+    if (this.length === MAX_HIGH_SCORES_COUNT) {
+      const temp = this.head;
+      this.head = this.head.next;
+      temp.next = null;
+    } else
+      this.length++;
   }
 
   insertAtEnd(data) {
