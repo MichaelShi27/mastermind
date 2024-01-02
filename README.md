@@ -21,9 +21,9 @@ My React components are written as functions with React Hooks, since function-ba
 
 ## Extensions
 
-- difficulty options (where users can alter both the length of the number to guess and the number of guesses they are allowed), 
-- voice functionality for making guesses
-- list of high scores
+- difficulty options (where users can alter both the length of the number to guess and the number of guesses they are allowed) 
+- speech recognition functionality for making guesses
+- ordered list of high scores
 - unit tests (run `npm test`)
 
 
