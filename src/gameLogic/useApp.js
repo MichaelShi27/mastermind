@@ -47,9 +47,10 @@ const useApp = () => {
   useEffect(() => analyzeGuess(), [ remainingGuesses ]);
 
   /*
-    this function runs after the app first renders, after the user presses the PlayAgainButton 
-    (e.g. after win or loss), and after a user submits to NumberLengthInput or TotalGuessesInput.
-    it fetches a new number for the user to guess, then resets various game state variables
+    this function runs after the app first renders, after the user presses the 
+    PlayAgainButton (e.g. after win or loss), and after a user submits to the
+    NumberLengthInput or TotalGuessesInput. it fetches a new number for the  
+    user to guess, then resets various game state variables
 
     - numLength determines how long the new number to guess should be
     - guessesCount determines how many guesses the user has in the new game 
@@ -89,7 +90,7 @@ const useApp = () => {
 
   const handleHighScores = () => {
     const scoreObj = new Score(highScores, totalGuesses - remainingGuesses, 
-      numberLength);
+        numberLength);
     const insertLocation = scoreObj.getInsertLocation();
     const updatedScores = scoreObj.getUpdatedScores(insertLocation);
 

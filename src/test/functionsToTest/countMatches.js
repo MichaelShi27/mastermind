@@ -18,9 +18,13 @@ const testCases = [
   { idx: 14, arguments: [ '654321', '123456' ], expectedResult: [ 6, 0 ] },
   { idx: 15, arguments: [ '123456', '777777' ], expectedResult: [ 0, 0 ] },
   { idx: 16, arguments: [ '123456', '777776' ], expectedResult: [ 1, 1 ] },
-  // this last test is supposed to fail to demonstrate what would happen
-  // if a test failed
-  { idx: 17, arguments: [ '123456', '777776' ], expectedResult: [ 1, 0 ] } 
+  // this last test is supposed to fail in order to demonstrate what would 
+  // happen if a test failed
+  { 
+    idx: 17, 
+    arguments: [ '123456', '777776' ], 
+    expectedResult: 'intentional test failure' 
+  } 
 ];
 
 const testCountMatches = (guess, num) => new Guess(guess, num).countMatches();
