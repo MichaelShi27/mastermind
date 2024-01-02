@@ -1,5 +1,6 @@
 import { GuessHistoryContainer, ListEntry } from './styles.js';
 
+// displays a list of past guesses
 const GuessHistory = ({ history }) => (
   <GuessHistoryContainer>
     <div>Past guesses:</div>

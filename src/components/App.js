@@ -7,6 +7,7 @@ import PlayAgainButton from './PlayAgainButton.js';
 import HighScores from './HighScores.js';
 import { Message, GuessContainer, OptionsContainer } from './styles.js';
 
+// the overall app component that contains all the other components
 const App = () => {
   const appObj = useApp(); // custom React Hook to hold main app logic
   const { message, remainingGuesses, numberLength } = appObj;

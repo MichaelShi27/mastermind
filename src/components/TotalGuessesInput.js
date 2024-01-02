@@ -2,6 +2,7 @@ import SubmitHandlers from "../gameLogic/SubmitHandlers.js";
 import { OptionsForm, OptionsInput } from "./styles.js";
 import { OPTIONS } from '../constants.js';
 
+// the input field where users can enter their desired number of total guesses
 const TotalGuessesInput = ({ totalGuesses, startNewGame, numberLength }) => {
   const onTotalGuessesSubmit = e => SubmitHandlers.handleTotalGuessesSubmit(e, 
       startNewGame, { numberLength, totalGuesses });

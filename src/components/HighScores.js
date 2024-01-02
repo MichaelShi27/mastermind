@@ -1,5 +1,6 @@
 import { HighScoresContainer, ListEntry } from './styles.js';
 
+// displays an ordered list of high scores
 const HighScores = ({ highScores }) => {
   const scoresArray = highScores.convertToArray().reverse();
   return (
