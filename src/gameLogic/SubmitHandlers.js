@@ -28,7 +28,7 @@ class SubmitHandlers {
   };
 
   static handleTotalGuessesSubmit = (e, startNewGame, options) => this.#handleOptionsSubmit(
-    e, startNewGame, options, this.#TOTAL_GUESSES, InputValidators.validateTotalGuesses);
+      e, startNewGame, options, this.#TOTAL_GUESSES, InputValidators.validateTotalGuesses);
 
   static handleNumberLengthSubmit = (e, startNewGame, options) => this.#handleOptionsSubmit(
       e, startNewGame, options, this.#NUMBER_LENGTH, InputValidators.validateNumberLength);
@@ -37,6 +37,7 @@ class SubmitHandlers {
     this is a generic function for handling input submits
       - e is the DOM Event, i.e. the form's submit event
       - optionToChange is whichever option the user is trying to change with their input, 
+        i.e. numberLength or totalGuesses
   */
   static #handleOptionsSubmit = (e, startNewGame, options, optionToChange, validationFunc) => {
     e.preventDefault();

@@ -11,15 +11,32 @@ import MessageHelpers from './helpers/MessageHelpers.js';
   i.e. the main/overarching logic of the app
 */
 const useApp = () => {
-  const [ number, setNumber ] = useState('0000'); // the number to guess
-  const [ guess, setGuess ] = useState(''); // user's guess
-  const [ remainingGuesses, setRemainingGuesses ] = useState(DEFAULTS.TOTAL_GUESSES); 
-  const [ message, setMessage ] = useState('');
-  const [ history, setHistory ] = useState([]);
-  const [ gameOver, setGameOver ] = useState(false);
+  // string - the number to guess
+  const [ number, setNumber ] = useState('0000'); 
+
+  // string - the user's guess
+  const [ guess, setGuess ] = useState(''); 
+
+  // string - the message displayed to the user
+  const [ message, setMessage ] = useState(''); 
+
+  // array of objects - contains the user's past guesses for the current number
+  const [ history, setHistory ] = useState([]); 
+
+  // integer - the length of the number to guess, i.e. how many digits it has
   const [ numberLength, setNumberLength ] = useState(DEFAULTS.NUMBER_LENGTH);
+
+  // integer - how many guesses the user starts with to guess the number
   const [ totalGuesses, setTotalGuesses ] = useState(DEFAULTS.TOTAL_GUESSES);
+
+  // boolean - if the game is over or not
+  const [ gameOver, setGameOver ] = useState(false);
+
+  // object - a linked list containing the user's best scores in ascending order
   const [ highScores, setHighScores ] = useState(new LinkedList());
+
+  // integer - the number of remaining guesses for the current number
+  const [ remainingGuesses, setRemainingGuesses ] = useState(DEFAULTS.TOTAL_GUESSES); 
 
   // start new game when page first renders
   useEffect(() => startNewGame(numberLength, totalGuesses), []);
@@ -51,10 +68,10 @@ const useApp = () => {
   };
 
   const handleNumberResponse = (data, numLength) => {
-    if (data.name === "Error") // should catch all errors except 404
+    if (data.name === "Error")
       return displayError(data.message);
       
-    // if 404 response, app will create & use its own random num
+    // if 404 response, the app will create & use its own random num
     const num = data === 404 ? AppHelpers.createRandomNumber(numLength) 
         : data.replace(/[\n]/g, ''); // otherwise, remove newline chars
 
@@ -78,11 +95,11 @@ const useApp = () => {
 
     if (updatedScores !== null)
       setHighScores(updatedScores);
-    return updatedScores;
+    return updatedScores; // returns null if highScores isn't changed
   };
 
   const analyzeGuess = () => {
-    if (guess === '') return;
+    if (guess === '') return; // need this for when the app first renders
 
     const [ digitCount, locationCount ] = new Guess(guess, number).countMatches();
     const feedback = MessageHelpers.createFeedbackMessage(digitCount, locationCount);
