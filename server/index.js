@@ -1,6 +1,6 @@
 import express from 'express';
 import routes from './routes.js';
-import './database.js';
+// import './database.js'; // ran out of time to implement db
 
 const PORT = process.env.PORT || 3001;
 
