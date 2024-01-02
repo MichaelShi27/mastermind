@@ -32,7 +32,8 @@ const useApp = () => {
   // boolean - if the game is over or not
   const [ gameOver, setGameOver ] = useState(false);
 
-  // object - a linked list containing the user's best scores in ascending order
+  // object - a linked list containing the user's best scores in ascending order,
+  // i.e. the head of the list will be the lowest high score
   const [ highScores, setHighScores ] = useState(new LinkedList());
 
   // integer - the number of remaining guesses for the current number
