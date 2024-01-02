@@ -7,6 +7,7 @@ export const MESSAGES = {
 };
 
 // min/max values of the possible digits in the number to guess
+// note: I decided to increase the range from 0-7 to 0-9
 export const DIGITS = {
   MIN_VAL: 0,
   MAX_VAL: 9
